@@ -1,0 +1,230 @@
+/* Colores de botones */
+.blue {
+  background-color: #007bff !important;
+}
+
+.orange {
+  background-color: #f59c1a !important;
+}
+
+.green {
+  background-color: #2a9d2f !important;
+}
+
+.purple {
+  background-color: #7c3aed !important;
+}
+
+/* Diseño base para pantallas extra grandes (más de 1300px) */
+.menu-reporte-wrapper {
+  margin: 40px auto;
+  width: 1730px;
+  height: 700px;
+  text-align: center;
+  padding: 40px 30px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.menu-reporte-wrapper h2 {
+  margin-bottom: 50px;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Estilo para la grid */
+.menu-reporte-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 580px);
+  gap: 40px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Estilo para los botones */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  font-weight: 700;
+  font-size: 30px;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  border: none;
+  gap: 12px;
+  transition: box-shadow 0.3s ease;
+  width: 480px;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.icon {
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+/* Contenedor del botón volver */
+.volver-container {
+  margin-top: 60px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.volver {
+  background-color: #7c3aed;
+  padding: 15px 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 8px rgba(124, 58, 237, 0.5);
+  min-width: 120px;
+}
+
+.btn.volver:hover {
+  box-shadow: 0 8px 15px rgba(124, 58, 237, 0.8);
+}
+
+/* Media Query para pantallas grandes (entre 1301px y 1600px) */
+@media screen and (max-width: 1600px) and (min-width: 1301px) {
+  .menu-reporte-wrapper {
+    width: 90% !important;
+    max-width: 1500px !important;
+  }
+}
+
+/* Media Query para pantallas medianas (entre 781px y 1300px) */
+@media screen and (max-width: 1300px) and (min-width: 781px) {
+  .menu-reporte-wrapper {
+    width: 95% !important;
+    max-width: 1000px !important;
+    height: auto !important;
+    min-height: 550px !important;
+    padding: 30px !important;
+    margin: 20px auto !important;
+  }
+  
+  .menu-reporte-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 25px !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    max-width: 800px !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    max-width: none !important;
+    font-size: 20px !important;
+    padding: 18px !important;
+    height: 80px !important;
+  }
+
+  .icon {
+    font-size: 2.5rem !important;
+  }
+  
+  .menu-reporte-wrapper h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 35px !important;
+  }
+  
+  .volver-container {
+    margin-top: 40px !important;
+    text-align: right !important;
+    padding-right: 15px !important;
+  }
+}
+
+/* Media Query para pantallas pequeñas (menores o iguales a 780px) */
+@media screen and (max-width: 780px) {
+  .menu-reporte-wrapper {
+    width: 95% !important;
+    max-width: 450px !important;
+    height: auto !important;
+    min-height: 600px !important;
+    padding: 25px 20px !important;
+    margin: 15px auto !important;
+  }
+  
+  .menu-reporte-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    font-size: 18px !important;
+    padding: 16px 12px !important;
+    height: 70px !important;
+    margin: 0 !important;
+  }
+
+  .icon {
+    font-size: 2.2rem !important;
+  }
+  
+  .menu-reporte-wrapper h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 25px !important;
+  }
+
+  .volver-container {
+    text-align: center !important;
+    padding: 0 !important;
+    margin-top: 25px !important;
+  }
+  
+  .volver {
+    padding: 12px 18px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Media Query adicional para pantallas muy pequeñas (móviles pequeños) */
+@media screen and (max-width: 480px) {
+  .menu-reporte-wrapper {
+    width: 98% !important;
+    max-width: 350px !important;
+    padding: 20px 15px !important;
+    margin: 10px auto !important;
+  }
+  
+  .menu-reporte-grid {
+    gap: 12px !important;
+  }
+  
+  .btn {
+    font-size: 16px !important;
+    padding: 14px 10px !important;
+    height: 60px !important;
+  }
+
+  .icon {
+    font-size: 1.8rem !important;
+  }
+  
+  .menu-reporte-wrapper h2 {
+    font-size: 1.2rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .volver {
+    padding: 10px 16px !important;
+    font-size: 0.8rem !important;
+  }
+}

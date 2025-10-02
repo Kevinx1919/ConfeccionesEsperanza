@@ -1,0 +1,242 @@
+.dashboard-container {
+  width: 1700px;
+  height: 725px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 40px 30px;
+  background-color: #f0f0f0; /* Fondo gris claro */
+  border-radius: 12px; /* Opcional, para un toque más suave */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dashboard-logo {
+  width: 150px;
+  height: 150px;
+}
+
+.dashboard-title {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+/* Métricas cards */
+.dashboard-metricas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  margin: 32px 0 40px 0;
+}
+.dashboard-metrica-card {
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 350px;
+  padding: 28px 18px;
+  border-radius: 14px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.dashboard-metrica-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+}
+.dashboard-metrica-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+.dashboard-metrica-value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Gráficas */
+.dashboard-graficas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.dashboard-grafica-item {
+  flex: 1 1 320px;
+  min-width: 320px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard-grafica-item h3 {
+  margin-bottom: 18px;
+  color: #7c3aed;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Gráficas pequeñas */
+.small-grafica {
+  max-width: 320px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  height: 220px !important;
+  box-sizing: border-box;
+}
+
+/* Gráficas medianas */
+.medium-grafica {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  height: 260px !important;
+  box-sizing: border-box;
+}
+
+/* Próximo pedido */
+.dashboard-proximo-pedido {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 22px 18px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+.dashboard-proximo-pedido h3 {
+  color: #663dd4;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.dashboard-proximo-pedido-color {
+  background: #f3f4f6 !important;
+  color: #2d2d2d !important;
+  border: 1.5px solid #7c3aed;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 10px;
+  font-size: 1.08rem;
+  text-align: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Responsive */
+@media screen and (max-width: 1300px) {
+  .dashboard-metricas, .dashboard-graficas {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .dashboard-metrica-card, .dashboard-grafica-item {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+@media screen and (max-width: 780px) {
+  .dashboard-container {
+    padding: 10px 2px !important;
+  }
+  .dashboard-metricas, .dashboard-graficas {
+    gap: 10px;
+  }
+  .dashboard-metrica-card, .dashboard-grafica-item {
+    padding: 14px 6px;
+    font-size: 1rem;
+  }
+  .dashboard-proximo-pedido {
+    padding: 10px 6px;
+    font-size: 0.98rem;
+  }
+}
+/* Media Query para pantallas grandes (entre 1301px y 1600px) */
+@media screen and (max-width: 1600px) and (min-width: 1301px) {
+  .dashboard-container {
+    width: 90% !important;
+    max-width: 1500px !important;
+  }
+}
+
+/* Media Query para pantallas medianas (entre 781px y 1300px) */
+@media screen and (max-width: 1300px) and (min-width: 781px) {
+  .dashboard-container {
+    width: 95% !important;
+    max-width: 1000px !important;
+    height: auto !important;
+    min-height: 550px !important;
+    padding: 30px !important;
+    margin: 20px auto !important;
+  }
+}
+
+/* Media Query para pantallas pequeñas (menores o iguales a 780px) */
+@media screen and (max-width: 780px) {
+  .dashboard-container {
+    width: 95% !important;
+    max-width: 450px !important;
+    height: auto !important;
+    min-height: 600px !important;
+    padding: 25px 20px !important;
+    margin: 15px auto !important;
+  }
+}
+
+/* Media Query adicional para pantallas muy pequeñas (móviles pequeños) */
+@media screen and (max-width: 480px) {
+  .dashboard-container {
+    width: 98% !important;
+    max-width: 350px !important;
+    padding: 20px 15px !important;
+    margin: 10px auto !important;
+  }
+}
+
+/* Layout de tres columnas para gráficas y próximo pedido */
+.dashboard-row-3col {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+.dashboard-row-3col > * {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 33.33%;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1100px) {
+  .dashboard-row-3col {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .dashboard-row-3col > * {
+    max-width: 100%;
+  }
+  .medium-grafica {
+    height: 200px !important;
+  }
+}

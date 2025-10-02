@@ -1,0 +1,172 @@
+/* Barra lateral */
+.barra-lateral {
+  width: 80px;
+  background: linear-gradient(180deg, #6a29aa, #3d1f71);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.barra-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  /* Añadido para que ocupe toda la altura y distribuya ítems */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* o space-between, space-evenly según prefieras */
+}
+
+.barra-lateral li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  /* eliminar margin-bottom para que no afecte la distribución */
+  margin-bottom: 0;
+}
+
+.barra-lateral a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  padding: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.barra-lateral a:hover,
+.barra-lateral a.activo {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.barra-lateral a img {
+  width: 83px;
+  height: 83px;
+  margin-bottom: 8px;
+  /* filter removido para mostrar colores reales */
+}
+
+/* Barra superior */
+.barra-superior {
+  position: fixed;
+  top: 0;
+  left: 80px; /* Para que no quede debajo de la barra lateral */
+  right: 0;
+  height: 80px;
+  background-color: #8833bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 0 50px;
+  box-sizing: border-box;
+}
+
+.barra-superior nav {
+  display: flex;
+  justify-content: space-around; /* O space-between o space-evenly */
+  font-weight: 600;
+  width: 100%; /* Ocupa todo el ancho posible */
+}
+
+.barra-superior nav a {
+  flex: 1; /* Cada link ocupa el mismo espacio */
+  text-align: center; /* Centra el texto dentro de cada link */
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 8px 0; /* Ajuste de padding vertical */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.barra-superior a:hover,
+.barra-superior a.activo {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para la barra lateral - nombre de usuario */
+.user-name-sidebar {
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: inherit;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Estilos para la barra superior - solo logout */
+.logout-section {
+  display: flex;
+  align-items: center;
+}
+
+.icono-salida {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.icono-salida:hover:not(.loading) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icono-salida img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+.icono-salida.loading {
+  cursor: not-allowed;
+}
+
+.logout-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .user-info {
+    display: none; /* Ocultar nombre en pantallas pequeñas */
+  }
+  
+  .user-section {
+    gap: 10px;
+  }
+}
+
