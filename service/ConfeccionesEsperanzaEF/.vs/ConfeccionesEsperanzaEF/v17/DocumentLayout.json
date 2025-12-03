@@ -1,0 +1,149 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\models\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\models\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\models\\dtos\\production\\tarealistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\models\\dtos\\production\\tarealistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\controllers\\taskcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\controllers\\taskcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\controllers\\customercontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\controllers\\customercontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|c:\\users\\asus\\onedrive\\desktop\\confeccionesesperanzaef_movil (3)\\confeccionesesperanzaef\\confeccionesesperanzaef\\services\\orderservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECD4F080-21FB-4F4D-A98E-720D11BC4F56}|ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj|solutionrelative:confeccionesesperanzaef\\services\\orderservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Models\\DTOs\\Auth\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Models\\DTOs\\Auth\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Models\\DTOs\\Auth\\AuthResponseDto.cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Models\\DTOs\\Auth\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T19:40:24.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Services\\AuthService.cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Services\\AuthService.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAUwLIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T19:39:32.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\appsettings.json",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\appsettings.json",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-02T19:07:13.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Program.cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Program.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Program.cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Program.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAwwO0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T02:24:08.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TareaListDto.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Models\\DTOs\\Production\\TareaListDto.cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Models\\DTOs\\Production\\TareaListDto.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Models\\DTOs\\Production\\TareaListDto.cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Models\\DTOs\\Production\\TareaListDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T05:50:10.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CustomerController .cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Controllers\\CustomerController .cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Controllers\\CustomerController .cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Controllers\\CustomerController .cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Controllers\\CustomerController .cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAewCoAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T05:22:39.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskController .cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Controllers\\TaskController .cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Controllers\\TaskController .cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Controllers\\TaskController .cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Controllers\\TaskController .cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwCcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T04:54:41.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderService .cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Services\\OrderService .cs",
+              "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Services\\OrderService .cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanzaEF_MOVIL (3)\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Services\\OrderService .cs",
+              "RelativeToolTip": "ConfeccionesEsperanzaEF\\Services\\OrderService .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPcBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T00:40:50.693Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
