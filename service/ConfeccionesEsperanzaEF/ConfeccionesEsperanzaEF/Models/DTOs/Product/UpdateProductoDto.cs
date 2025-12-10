@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ConfeccionesEsperanzaEF.Models.DTOs.Product
 {
@@ -13,19 +14,24 @@ namespace ConfeccionesEsperanzaEF.Models.DTOs.Product
         public string DescripcionProducto { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El color es obligatorio")]
-        public int Color_IdColor { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "El ID del color debe ser mayor a 0")]
+        public int? Color_IdColor { get; set; }
 
         [Required(ErrorMessage = "La talla es obligatoria")]
-        public int Talla_IdTalla { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "El ID de la talla debe ser mayor a 0")]
+        public int? Talla_IdTalla { get; set; }
 
         [Required(ErrorMessage = "La categoría es obligatoria")]
-        public int Categoria_IdCategoria { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "El ID de la categoría debe ser mayor a 0")]
+        public int? Categoria_IdCategoria { get; set; }
 
         [Required(ErrorMessage = "La familia es obligatoria")]
-        public int Familia_IdFamilia { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "El ID de la familia debe ser mayor a 0")]
+        public int? Familia_IdFamilia { get; set; }
 
         [Required(ErrorMessage = "La línea es obligatoria")]
-        public int Linea_IdLinea { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "El ID de la línea debe ser mayor a 0")]
+        public int? Linea_IdLinea { get; set; }
 
         // Lista actualizada de materiales
         public List<ProductoMaterialDto> Materiales { get; set; } = new();
