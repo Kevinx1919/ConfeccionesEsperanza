@@ -1,6 +1,6 @@
-projectKey=ConfeccionesEsperanzaBackend
+projectKey=Backend-Confecciones-esperanza-API
 serverUrl=http://localhost:9000
 serverVersion=25.10.0.114319
-dashboardUrl=http://localhost:9000/dashboard?id=ConfeccionesEsperanzaBackend
-ceTaskId=64c7faf6-3044-4b0f-adff-807d053c98b0
-ceTaskUrl=http://localhost:9000/api/ce/task?id=64c7faf6-3044-4b0f-adff-807d053c98b0
+dashboardUrl=http://localhost:9000/dashboard?id=Backend-Confecciones-esperanza-API
+ceTaskId=8942a1ae-af0c-4895-b8df-2223620bc147
+ceTaskUrl=http://localhost:9000/api/ce/task?id=8942a1ae-af0c-4895-b8df-2223620bc147

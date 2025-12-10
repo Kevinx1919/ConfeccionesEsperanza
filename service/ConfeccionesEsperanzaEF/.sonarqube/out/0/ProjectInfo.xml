@@ -4,15 +4,15 @@
   <ProjectLanguage>C#</ProjectLanguage>
   <ProjectType>Product</ProjectType>
   <ProjectGuid>ecd4f080-21fb-4f4d-a98e-720d11bc4f56</ProjectGuid>
-  <FullPath>C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF.csproj</FullPath>
+  <FullPath>C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF.csproj</FullPath>
   <IsExcluded>false</IsExcluded>
   <AnalysisResultFiles>
-    <AnalysisResultFile Id="FilesToAnalyze" Location="C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\.sonarqube\conf\0\FilesToAnalyze.txt" />
+    <AnalysisResultFile Id="FilesToAnalyze" Location="C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\.sonarqube\conf\0\FilesToAnalyze.txt" />
   </AnalysisResultFiles>
   <AnalysisSettings>
-    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\.sonarqube\out\0\Issues.json</Property>
-    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\.sonarqube\out\0</Property>
-    <Property Name="sonar.cs.scanner.telemetry">C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\.sonarqube\out\0\Telemetry.json</Property>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\.sonarqube\out\0\Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\.sonarqube\out\0</Property>
+    <Property Name="sonar.cs.scanner.telemetry">C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\.sonarqube\out\0\Telemetry.json</Property>
   </AnalysisSettings>
   <Configuration>Debug</Configuration>
   <Platform>AnyCPU</Platform>

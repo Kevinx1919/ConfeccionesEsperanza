@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConfeccionesEsperanzaEF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09f7cb3238789bbdb642a41eb1fbef68941166b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConfeccionesEsperanzaEF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConfeccionesEsperanzaEF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

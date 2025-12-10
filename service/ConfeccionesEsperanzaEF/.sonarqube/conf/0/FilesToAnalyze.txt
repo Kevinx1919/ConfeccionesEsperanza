@@ -1,113 +1,113 @@
-﻿C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\AuthController.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\CustomerController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\DashboardController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\MaterialController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\OrderController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\ProductController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\RolesController.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\TaskController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\UserController .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\WeatherForecastController.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Datos\ApplicationDbContext.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\20251021012318_movilprueba.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\20251021012318_movilprueba.Designer.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\ApplicationDbContextModelSnapshot.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Categoria.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Color.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Familia.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Linea.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Talla.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\EstadoPedido.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\EstadoTarea.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\TipoUsuario.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Customer\Cliente.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\AuthResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\ChangePasswordDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\ConfirmEmailDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\LoginDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\RegisterDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\TwoFactorDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\UpdateProfileDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\VerifyTwoFactorDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\CreateClienteDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\UpdateClienteDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\CreateMaterialDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\CreateTipoMaterialDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\TipoMaterialInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\UpdateMaterialDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\CreateDetallePedidoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\CreatePedidoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\DashboardMetricasDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\DetallePedidoInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoConProgresoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoFilterDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoProgresoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\SemestreEstadisticasDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\UpdateDetallePedidoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\UpdatePedidoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\AsignacionFilterDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\AsignarTareasMasivasDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\CreateTareaDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\CreateUsuarioProductoTareaDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TareaInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TareaListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TaskResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UpdateTareaDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UpdateUsuarioProductoTareaDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UsuarioProductoTareaInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UsuarioProductoTareaListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\CreateProductoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoFilterDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoMaterialDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoMaterialInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\UpdateProductoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\AddUserClaimDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\AssignRoleDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\CreateRoleDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\RoleInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\CreateUserDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\SetPasswordDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UpdateUserDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserClaimDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserFilterDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserInfoDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserListDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserResponseDto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Material\Material.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Material\TipoMaterial.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Order\DetallePedido.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Order\Pedidos.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Production\Tarea.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Production\UsuarioProductoTarea.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Product\Producto.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Product\ProductoMaterial.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Program.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\AuthService.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\CustomerService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\DatabaseSeedService.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\MaterialService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\OrderService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\ProductService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\TaskService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\UserManagementService .cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\WeatherForecast.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.GlobalUsings.g.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.AssemblyInfo.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\appsettings.Development.json
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\appsettings.json
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF.http
-C:\Users\USER\OneDrive\Documentos\trabajos\6to TRIMETRE\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Properties\launchSettings.json
+﻿C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\AuthController.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\CustomerController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\DashboardController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\MaterialController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\OrderController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\ProductController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\RolesController.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\TaskController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\UserController .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Controllers\WeatherForecastController.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Datos\ApplicationDbContext.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\20251021012318_movilprueba.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\20251021012318_movilprueba.Designer.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Migrations\ApplicationDbContextModelSnapshot.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Categoria.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Color.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Familia.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Linea.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Catalog\Talla.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\EstadoPedido.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\EstadoTarea.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Common\TipoUsuario.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Customer\Cliente.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\AuthResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\ChangePasswordDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\ConfirmEmailDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\LoginDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\RegisterDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\TwoFactorDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\UpdateProfileDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Auth\VerifyTwoFactorDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\ClienteResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\CreateClienteDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Customer\UpdateClienteDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\CreateMaterialDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\CreateTipoMaterialDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\MaterialResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\TipoMaterialInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Material\UpdateMaterialDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\CreateDetallePedidoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\CreatePedidoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\DashboardMetricasDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\DetallePedidoInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoConProgresoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoFilterDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoProgresoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\PedidoResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\SemestreEstadisticasDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\UpdateDetallePedidoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Order\UpdatePedidoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\AsignacionFilterDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\AsignarTareasMasivasDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\CreateTareaDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\CreateUsuarioProductoTareaDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TareaInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TareaListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\TaskResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UpdateTareaDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UpdateUsuarioProductoTareaDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UsuarioProductoTareaInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Production\UsuarioProductoTareaListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\CreateProductoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoFilterDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoMaterialDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoMaterialInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\ProductoResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Product\UpdateProductoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\AddUserClaimDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\AssignRoleDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\CreateRoleDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\Role\RoleInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\CreateUserDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\SetPasswordDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UpdateUserDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserClaimDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserFilterDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserInfoDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserListDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\DTOs\User\UserResponseDto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Material\Material.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Material\TipoMaterial.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Order\DetallePedido.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Order\Pedidos.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Production\Tarea.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Production\UsuarioProductoTarea.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Product\Producto.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Models\Product\ProductoMaterial.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Program.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\AuthService.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\CustomerService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\DatabaseSeedService.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\MaterialService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\OrderService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\ProductService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\TaskService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Services\UserManagementService .cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\WeatherForecast.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.GlobalUsings.g.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.AssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\obj\Debug\net9.0\ConfeccionesEsperanzaEF.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\appsettings.Development.json
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\appsettings.json
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF.http
+C:\Users\ASUS\OneDrive\Desktop\ConfeccionesEsperanza\service\ConfeccionesEsperanzaEF\ConfeccionesEsperanzaEF\Properties\launchSettings.json
