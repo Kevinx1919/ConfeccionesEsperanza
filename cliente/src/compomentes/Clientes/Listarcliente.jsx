@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 
 const Listarcliente = () => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Listarcliente = () => {
       setLoading(true);
       const token = localStorage.getItem('token'); // Ajusta según tu implementación
       
-      const response = await fetch('https://localhost:7232/api/Customer', {
+      const response = await fetch(apiUrl('/api/Customer'), {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -33,8 +35,9 @@ const Listarcliente = () => {
 
       const data = await response.json();
       // Basado en tu JSON, los clientes están en data.clientes
-      setClientes(data.clientes || []);
-      setFilteredClientes(data.clientes || []);
+      const clientesRecibidos = readCollection(data, ['clientes']);
+      setClientes(clientesRecibidos);
+      setFilteredClientes(clientesRecibidos);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching clientes:', err);

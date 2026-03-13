@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { apiUrl } from '../../config/api';
 import './login.css';
+
+const normalizeAuthResponse = (payload) => ({
+  isSuccess: payload?.isSuccess ?? payload?.IsSuccess ?? false,
+  message: payload?.message ?? payload?.Message ?? '',
+  token: payload?.token ?? payload?.Token ?? null,
+  user: payload?.user ?? payload?.User ?? null,
+  tokenExpiration: payload?.tokenExpiration ?? payload?.TokenExpiration ?? null,
+});
 
 const Login = () => {
   const { login } = useAuth();
@@ -49,7 +58,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('https://localhost:7232/api/Auth/login', {
+      const response = await fetch(apiUrl('/api/Auth/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +66,8 @@ const Login = () => {
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      const rawData = await response.json();
+      const data = normalizeAuthResponse(rawData);
 
       if (data.isSuccess) {
         // Usar el contexto de autenticación

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 
-const API_URL = 'https://localhost:7232/api/Customer';
+const API_URL = apiUrl('/api/Customer');
 
 const initialClienteState = {
   nombreCliente: '',

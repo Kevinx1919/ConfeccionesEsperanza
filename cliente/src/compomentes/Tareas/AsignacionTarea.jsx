@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 import './Tareas.css';
 
-const API_URL = 'https://localhost:7232/api/Task/asignaciones';
+const API_URL = apiUrl('/api/Task/asignaciones');
 
 const initialState = {
   usuario_IdUsuario: '',
@@ -27,17 +29,17 @@ function AsignacionTarea() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     Promise.all([
-      fetch('https://localhost:7232/api/User', { headers: { 'Authorization': `Bearer ${token}` } }),
-      fetch('https://localhost:7232/api/Product', { headers: { 'Authorization': `Bearer ${token}` } }),
-      fetch('https://localhost:7232/api/Task', { headers: { 'Authorization': `Bearer ${token}` } })
+      fetch(apiUrl('/api/User'), { headers: { 'Authorization': `Bearer ${token}` } }),
+      fetch(apiUrl('/api/Product'), { headers: { 'Authorization': `Bearer ${token}` } }),
+      fetch(apiUrl('/api/Task'), { headers: { 'Authorization': `Bearer ${token}` } })
     ])
       .then(async ([u, p, t]) => {
         const usuarios = await u.json();
         const productos = await p.json();
         const tareas = await t.json();
-        setUsuarios(Array.isArray(usuarios) ? usuarios : usuarios.usuarios || []);
-        setProductos(Array.isArray(productos) ? productos : productos.productos || []);
-        setTareas(Array.isArray(tareas) ? tareas : tareas.tareas || []);
+        setUsuarios(readCollection(usuarios, ['users', 'usuarios']));
+        setProductos(readCollection(productos, ['productos']));
+        setTareas(readCollection(tareas, ['tareas']));
       })
       .catch(() => {
         setError('No se pudieron cargar los datos de referencia');

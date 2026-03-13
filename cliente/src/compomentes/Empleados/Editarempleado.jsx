@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { apiUrl } from '../../config/api';
 import './Emplado.css';
 
 const EditarEmpleado = () => {
@@ -36,7 +37,7 @@ const EditarEmpleado = () => {
   const fetchEmpleado = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://localhost:7232/api/User/${id}`, {
+      const response = await fetch(apiUrl(`/api/User/${id}`), {
         headers: getAuthHeaders()
       });
 
@@ -65,7 +66,7 @@ const EditarEmpleado = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('https://localhost:7232/api/Roles', {
+      const response = await fetch(apiUrl('/api/Roles'), {
         headers: getAuthHeaders()
       });
       if (response.ok) {
@@ -117,7 +118,7 @@ const EditarEmpleado = () => {
         roles: selectedRoles
       };
 
-      const updateResponse = await fetch(`https://localhost:7232/api/User/${id}`, {
+      const updateResponse = await fetch(apiUrl(`/api/User/${id}`), {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(payload)
@@ -130,7 +131,7 @@ const EditarEmpleado = () => {
       // Asignar roles nuevos
       const rolesToAdd = selectedRoles.filter(r => !(formData.roles || []).includes(r));
       for (const role of rolesToAdd) {
-        await fetch('https://localhost:7232/api/Roles/assign', {
+        await fetch(apiUrl('/api/Roles/assign'), {
           method: 'POST',
           headers: {
             ...getAuthHeaders(),

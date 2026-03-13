@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import '../../compomentes/DashBoard/chart-setup';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import { apiUrl } from '../../config/api';
 
-const API_URL = 'https://localhost:7232/api/Dashboard/metricas';
+const API_URL = apiUrl('/api/Dashboard/metricas');
 
 function Dashboard() {
   const [data, setData] = useState(null);
