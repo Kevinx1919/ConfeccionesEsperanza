@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 import './Pedido.css'; 
 
 // --- Configuración de API (DEBE SER REEMPLAZADO POR UN MÓDULO API REAL) ---
-const API_URL = 'https://localhost:7232/api/Order';
+const API_URL = apiUrl('/api/Order');
 
 const fetchPedidoDetalles = async (id) => {
     const token = localStorage.getItem('token');

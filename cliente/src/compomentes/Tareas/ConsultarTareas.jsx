@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 import './Tareas.css';
 
-const API_URL = 'https://localhost:7232/api/Task';
+const API_URL = apiUrl('/api/Task');
 
 function ConsultarTareas() {
   const [tareas, setTareas] = useState([]);
@@ -37,8 +39,7 @@ function ConsultarTareas() {
         return res.json();
       })
       .then(data => {
-        // Si la respuesta tiene .tareas, usar ese array
-        const arr = Array.isArray(data.tareas) ? data.tareas : (Array.isArray(data) ? data : (data ? [data] : []));
+        const arr = readCollection(data, ['tareas']);
         setTareas(arr);
         setFiltradas(arr);
         setLoading(false);

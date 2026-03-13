@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { apiUrl } from '../../config/api';
 import salidaIcon from '../../assets/salida.png';
 import './BarraNavegacion.css';
 
@@ -18,7 +19,7 @@ const BarraSuperior = () => {
 
     try {
       // Llamar al endpoint de logout de la API
-      const response = await fetch('https://localhost:7232/api/Auth/logout', {
+      const response = await fetch(apiUrl('/api/Auth/logout'), {
         method: 'POST',
         headers: getAuthHeaders()
       });

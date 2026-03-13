@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 import './Tareas.css';
 
-const API_URL = 'https://localhost:7232/api/Task';
+const API_URL = apiUrl('/api/Task');
 
 function EliminarTarea() {
   const { id } = useParams();
