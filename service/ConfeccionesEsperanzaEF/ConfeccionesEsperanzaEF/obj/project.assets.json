@@ -6081,11 +6081,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Sexto\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj",
       "projectName": "ConfeccionesEsperanzaEF",
-      "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj",
+      "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Sexto\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Sexto\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6196,7 +6196,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

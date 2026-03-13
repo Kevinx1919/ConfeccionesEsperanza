@@ -3,6 +3,10 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+const getStoredToken = () => localStorage.getItem('token');
+const getStoredUser = () => localStorage.getItem('user');
+const getStoredTokenExpiration = () => localStorage.getItem('tokenExpiration');
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -19,9 +23,9 @@ export const AuthProvider = ({ children }) => {
 
   // Verificar si hay un token guardado al cargar la aplicación
   useEffect(() => {
-    const savedToken = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
-    const tokenExpiration = localStorage.getItem('tokenExpiration');
+    const savedToken = getStoredToken();
+    const savedUser = getStoredUser();
+    const tokenExpiration = getStoredTokenExpiration();
 
     if (savedToken && savedUser && tokenExpiration) {
       // Verificar si el token no ha expirado
@@ -42,6 +46,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = (authData) => {
     const { token, user, tokenExpiration } = authData;
+
+    if (!token || !user || !tokenExpiration) {
+      throw new Error('La respuesta de autenticacion no contiene la informacion necesaria.');
+    }
     
     // Guardar en localStorage
     localStorage.setItem('token', token);
@@ -67,7 +75,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isTokenExpired = () => {
-    const tokenExpiration = localStorage.getItem('tokenExpiration');
+    const tokenExpiration = getStoredTokenExpiration();
     if (!tokenExpiration) return true;
     
     const expirationDate = new Date(tokenExpiration);
@@ -77,8 +85,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const getAuthHeaders = () => {
+    const currentToken = token || getStoredToken();
+
     return {
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${currentToken}`,
       'Content-Type': 'application/json'
     };
   };

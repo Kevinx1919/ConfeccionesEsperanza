@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection, readValue } from '../../utils/apiResponse';
 import './Pedido.css';
 
-const API_BASE_URL = 'https://localhost:7232/api/Order';
+const API_BASE_URL = apiUrl('/api/Order');
 
 const getPedidos = async ({
   clienteId = '',
@@ -78,11 +80,11 @@ const ConsultarPedido = () => {
         pageNumber: currentPage,
         pageSize: pedidosPorPagina
       });
-      let fetchedPedidos = data.pedidos || [];
+      let fetchedPedidos = readCollection(data, ['pedidos']);
       fetchedPedidos.sort((b, a) => b.idPedido - a.idPedido);
 
       setPedidos(fetchedPedidos); // Usamos el array ya ordenado
-      setTotalCount(data.totalCount || 0);
+      setTotalCount(readValue(data, ['totalCount'], 0) || 0);
     } catch (err) {
       setError(err.message);
     } finally {

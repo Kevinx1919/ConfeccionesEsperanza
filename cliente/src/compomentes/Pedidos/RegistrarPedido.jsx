@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 import './Pedido.css';
 
-const API_URL = 'https://localhost:7232/api/Order';
+const API_URL = apiUrl('/api/Order');
 
 const initialPedidoState = {
   cliente_IdCliente: '',
@@ -29,14 +31,14 @@ function RegistrarPedido() {
   const fetchClientes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('https://localhost:7232/api/Customer', {
+      const res = await fetch(apiUrl('/api/Customer'), {
         headers: {
           'Content-Type': 'application/json',
           ...(token && { 'Authorization': `Bearer ${token}` })
         }
       });
       const data = await res.json();
-      setClientes(data.clientes || []); // <-- Igual que en Listarcliente.jsx
+      setClientes(readCollection(data, ['clientes']));
     } catch (err) {
       // Manejo de error opcional
     }

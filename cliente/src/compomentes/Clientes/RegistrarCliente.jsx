@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 
-const API_URL = 'https://localhost:7232/api/Customer'; // Cambia la URL según tu backend
+const API_URL = apiUrl('/api/Customer');
 
 const initialClienteState = {
   nombreCliente: '',

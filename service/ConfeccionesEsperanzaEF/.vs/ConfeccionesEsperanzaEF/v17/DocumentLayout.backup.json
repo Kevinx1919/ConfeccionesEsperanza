@@ -34,8 +34,7 @@
               "RelativeToolTip": "ConfeccionesEsperanzaEF\\Services\\OrderService .cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T22:23:47.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T22:23:47.549Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "ConfeccionesEsperanzaEF\\Services\\MaterialService .cs",
               "ToolTip": "C:\\Users\\ASUS\\OneDrive\\Desktop\\ConfeccionesEsperanza\\service\\ConfeccionesEsperanzaEF\\ConfeccionesEsperanzaEF\\Services\\MaterialService .cs",
               "RelativeToolTip": "ConfeccionesEsperanzaEF\\Services\\MaterialService .cs",
-              "ViewState": "AgIAAKABAAAAAAAAAADwv6EBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAI0BAAAAAAAAAADwv6EBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-08T21:43:29.013Z",
               "EditorCaption": ""
@@ -60,8 +59,15 @@
               "RelativeToolTip": "ConfeccionesEsperanzaEF\\Program.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T21:33:06.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-08T21:33:06.635Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
