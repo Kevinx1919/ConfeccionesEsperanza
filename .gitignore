@@ -4,3 +4,4 @@ obj/
 .sonarqube/
 *.suo
 *.user
+node_modules/
