@@ -32,6 +32,7 @@ import MenuPedido from "./compomentes/Pedidos/MenuPedido";
 import ConsultarPedido from "./compomentes/Pedidos/ConsultarPedido";
 import DetallePedido from "./compomentes/Pedidos/DetallePedido";
 import RegistrarPedido from "./compomentes/Pedidos/RegistrarPedido";
+import EditarPedido from "./compomentes/Pedidos/EditarPedido";
 //importaciones para tareas
 import MenuTarea from "./compomentes/Tareas/MenuTarea";
 import ConsultarTareas from "./compomentes/Tareas/ConsultarTareas";
@@ -100,9 +101,12 @@ const MainApp = () => {
         
         {/* Rutas para pedidos */}
         <Route path="/pedidos" element={<MenuPedido />} />
+        <Route path="/consultarPedido" element={<ConsultarPedido />} />
         <Route path="/consularPedido" element={<ConsultarPedido />} />
         <Route path="/detallePedido/:id" element={<DetallePedido />} />
+        <Route path="/registrarPedido" element={<RegistrarPedido />} />
         <Route path="/registarPedido" element={<RegistrarPedido />} />
+        <Route path="/editarPedido/:id" element={<EditarPedido />} />
         
         {/* Rutas para tareas */}
         <Route path="/tareas" element={<MenuTarea />} />
