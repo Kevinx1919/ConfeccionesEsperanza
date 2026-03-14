@@ -1,22 +1,26 @@
-/* Colores de botones */
+/* Colores de botones (alineados al estilo de Stock) */
 .blue {
-  background-color: #007bff !important;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
 }
 
 .orange {
-  background-color: #f59c1a !important;
+  background: linear-gradient(135deg, #f59c1a, #d97706);
+  color: #fff;
 }
 
 .green {
-  background-color: #2a9d2f !important;
+  background: linear-gradient(135deg, #2ecc71, #22c55e);
+  color: #fff;
 }
 
 .purple {
-  background-color: #7c3aed !important;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
 }
 
-/* Diseño base para pantallas extra grandes (más de 1300px) */
-.menu-pedido-wrapper {
+
+.p-menu-wrapper {
   margin: 40px auto;
   width: 1730px;
   height: 700px;
@@ -28,24 +32,38 @@
   box-sizing: border-box;
 }
 
-.menu-pedido-wrapper h2 {
+.p-menu-wrapper h2 {
   margin-bottom: 50px;
   font-weight: 600;
   font-size: 1.8rem;
   color: #333;
 }
+.p-simple-form-container h2,
+.p-simple-form-container h3,
+.p-editar-container h2,
+.p-detalle-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
 
 /* Estilo para la grid */
-.menu-pedido-grid {
+.p-menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, 580px);
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   justify-content: center;
   margin: 0 auto;
+  max-width: 1200px;
 }
 
 /* Estilo para los botones */
-.btn {
+.p-menu-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,28 +77,28 @@
   border: none;
   gap: 12px;
   transition: box-shadow 0.3s ease;
-  width: 480px;
+  width: 100%;
   height: 100px;
   box-sizing: border-box;
 }
 
-.btn:hover {
+.p-menu-btn:hover {
   box-shadow: 0 8px 15px rgba(0,0,0,0.3);
 }
 
-.icon {
+.p-icon {
   font-weight: bold;
   font-size: 3.5rem;
 }
 
 /* Contenedor del botón volver */
-.volver-container {
-  margin-top: 60px;
+.p-volver-container {
+  margin-top: 20px;
   text-align: right;
   padding-right: 10px;
 }
 
-.volver {
+.p-volver {
   background-color: #7c3aed;
   padding: 15px 25px;
   font-weight: 700;
@@ -90,69 +108,146 @@
   min-width: 120px;
 }
 
-.btn.volver:hover {
+.p-volver:hover {
   box-shadow: 0 8px 15px rgba(124, 58, 237, 0.8);
 }
   
-  .menu-pedido-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 25px !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-    max-width: 800px !important;
-  }
-
-  .btn {
-    width: 100% !important;
-    max-width: none !important;
-    font-size: 20px !important;
-    padding: 18px !important;
-    height: 80px !important;
-  }
-
-  .icon {
-    font-size: 2.5rem !important;
-  }
-  
-  .menu-pedido-wrapper h2 {
-    font-size: 1.5rem !important;
-    margin-bottom: 35px !important;
-  }
-  
-  .volver-container {
-    margin-top: 40px !important;
-    text-align: right !important;
-    padding-right: 15px !important;
-  }
 
 /* Registrar y Consultar Pedido */
 /* Estilos para GestionPedidos.jsx */
-
-.vista-botones {
+.p-input-registrar{
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  border-radius: 0;
+  font-size: 1rem;
+  transition: border-bottom-color 0.2s ease, border-bottom-width 0.2s ease;
+  box-sizing: border-box;
+  color: #222;
+  background-color: #fff;
+}
+.p-input-registrar:focus {
+  outline: none;
+  border-bottom-color: #7c3aed;
+  border-bottom-width: 3px;
+}
+.p-input-registrar:disabled {
+  background-color: #f5f5f5;
+  border-bottom-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.p-simple-form-container  {
+  margin: 40px auto;
+  width: 85%;
+  padding: 1rem 1rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  box-sizing: border-box;
+}
+.p-simple-form-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+.p-simple-form div {
+  display: flex;
+  font-size: 10px;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.p-simple-form label {
+  font-size: 10px;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.p-form-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+.p-form-buttons button[type="submit"] {
+  background-color: #2a9d2f;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+.p-form-buttons button[type="submit"]:not(:disabled):hover {
+  box-shadow: 0 4px 12px rgba(42, 157, 47, 0.3);
+  transform: translateY(-2px);
+}
+.p-form-buttons button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.p-form-buttons button[type="button"] {
+  padding: 12px 30px;
+  border: 2px solid #6c757d;
+  background-color: transparent;
+  color: #6c757d;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+.p-form-buttons button[type="button"]:not(:disabled):hover {
+  background-color: #6c757d;
+  color: white;
+  transform: translateY(-2px);
+}
+.p-form-buttons button[type="button"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.p-vista-botones {
   margin-bottom: 20px;
   display: flex;
   gap: 10px;
 }
 
-.vista-botones button:disabled {
+.p-vista-botones button:disabled {
   background-color: #6a29aa;
   color: white;
   cursor: default;
   border-color: #6a29aa;
 }
-
-.vista-contenido h2 {
-  color: #1d1d1d;
+.p-textD {
+  color: #000000;
+  font-size: 1.2rem;
 }
-.acciones-header {
+.p-vista-contenido h2 {
+  color: #000000;
+}
+.p-acciones-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.acciones-header input {
+.p-acciones-header input {
   padding: 8px;
   width: 300px;
   background-color: #f3f4f6;
@@ -160,23 +255,23 @@
   color: #1b1b1b;
 }
 
-table {
+.p-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+.p-table th, .p-table td {
   border: 1px solid #ddd;
   color: #000000;
   padding: 12px;
   text-align: left;
 }
 
-th {
+.p-table th {
   background-color: #f2f2f2;
 }
 
-.formulario-container {
+.p-formulario-container {
   font-size: 20px;
   width: 100%;
   max-width: none;
@@ -189,7 +284,7 @@ th {
   box-sizing: border-box;
 }
 
-.formulario-container form {
+.p-formulario-container form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -198,7 +293,7 @@ th {
   width: calc(100% - 90px);
 }
 
-.formulario-container input {
+.p-formulario-container input {
   font-size: 1.5rem;
   font-size: 1rem;
   background-color: #f3f4f6;
@@ -207,7 +302,7 @@ th {
   border-radius: 6px;
   padding: 10px;
 }
-select {
+.p-simple-form select, .p-consulta-container select {
   font-size: 1rem;
   background-color: #f3f4f6;
   border: 1px solid #bebebe;
@@ -216,19 +311,19 @@ select {
   padding: 10px;
 }
 
-.vista-contenido {
+.p-vista-contenido {
   width: 100%;
   padding: 0 3rem;
   box-sizing: border-box;
 }
 
-.form-actions {
+.p-form-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.volver {
+.p-volver {
   margin-left: auto; 
   display: flex;
   justify-content: center;
@@ -236,48 +331,50 @@ select {
 }
 
 /* Estilos para la consulta de pedidos */
-.consulta-container {
-  background: white;
-  padding: 1rem;
-  padding: 2rem;
-  color: #080808;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.p-consulta-container {
+  margin: 20px auto ;
+  padding: 20px ;
+  max-width: none ;
+  width: calc(100% - 40px) ;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 1600px;
-  margin: 20px auto;
-  margin-bottom: 50px;
+  margin-left: 0 ; /* anula desplazamientos heredados del layout */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
 }
 
-.consulta-container h2 {
+.p-consulta-container h2 {
   text-align: left;
   margin-bottom: 1.5rem;
-  font-size: 2rem; 
+  font-size: 2rem;
+  color: #000000;
 }
 
-.tabla-pedidos {
-  width: 100%;
+.p-tabla-pedidos {
+  width: 97%;
+  height: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 1rem;
 }
 
-.tabla-pedidos th, .tabla-pedidos td {
-  padding: 12px 15px;
+.p-tabla-pedidos th, .p-tabla-pedidos td {
+  padding: 1px 1px;
   border: 1.6px solid #0c0c0c;
+  font-size: 12px;
   border: 1px solid #0c0c0c;
   color: #0f0f0f;
   text-align: left;
 }
 
-.tabla-pedidos th {
+.p-tabla-pedidos th {
   background-color: #663dd4;
   font-weight: 600;
   color: white;
 }
 
 /* Estilos para los controles de paginación */
-.paginacion-controles {
+.p-paginacion-controles {
   display: flex;
   justify-content: flex-start; /* <-- Cambia esto */
   align-items: center;
@@ -287,17 +384,17 @@ select {
   border-radius: 8px;
 }
 
-.paginacion-controles button:disabled {
+.p-paginacion-controles button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.paginacion-grupo {
+.p-paginacion-grupo {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.input-desde{
+.p-input-desde{
   
   width: 60px;
   padding: 5px;
@@ -305,174 +402,211 @@ select {
   border-radius: 4px;
 }
 
-.btn-purple{
-  background-color: #7c3aed;
-  color: white;
+.p-btn-purple {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+.p-btn-purple:not(:disabled):hover {
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+  transform: translateY(-2px);
+}
+.p-btn-purple:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 /* DetallePedido */
-.detalle-container {
+.p-detalle-container {
   background: white;
-  padding: 1rem;
   padding: 2rem;
+  font-size: 1rem;
   color: #000000;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
   box-sizing: border-box;
-  width: 100%;
-  max-width: 1600px;
-  margin: 20px auto;
-  margin-bottom: 50px;
+  max-width: 1200px;
+  margin: 203px ;
+  margin-bottom: 180px;
 }
-.btn-status {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #7c3aed;
-  color: white;
-  font-weight: bold;
-  cursor: default;
-}
-.btn-status:hover {
-  background-color: #5a2abf;
-}
-.estado-tag {
+.p-btn-status,
+.p-estado-tag {
   display: inline-block;
-  padding: 5px 10px;
-  border-radius: 12px;
-  border: 1px solid #000000;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  color: #fff;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  min-width: 90px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
-.estado-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 12px; /* Bordes redondeados para el 'encerrado' */
-    font-size: 0.85em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: white; /* Color de texto predeterminado */
-    text-align: center;
-    min-width: 80px; /* Asegura un ancho mínimo */
+
+.p-btn-status:hover,
+.p-estado-tag:hover {
+  filter: brightness(1.05);
+}
+
+.p-estado-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  min-width: 80px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Colores específicos para cada estado (usando el Enum del backend) */
 
 /* Estado 1: Pendiente */
-.estado-1 {
+.p-estado-1 {
     background-color: #7f8c8d; /* Gris */
 }
 
 /* Estado 2: En Proceso */
-.estado-2 {
+.p-estado-2 {
     background-color: #3498db; /* Azul */
 }
 
 /* Estado 3: En Producción */
-.estado-3 {
-    background-color: #f39c12; /* Naranja/Amarillo */
+.p-estado-3 {
+    background-color: #f59c1a; /* Naranja */
 }
 
 /* Estado 4: Completado */
-.estado-4 {
+.p-estado-4 {
     background-color: #2ecc71; /* Verde esmeralda */
 }
 
 /* Estado 5: Cancelado */
-.estado-5 {
-    background-color: #e74c3c; /* Rojo fuerte */
+.p-estado-5 {
+    background-color: #dc3545; /* Rojo */
 }
 
 /* Estado 6: Entregado */
-.estado-6 {
+.p-estado-6 {
     background-color: #9b59b6; /* Morado/Violeta */
 }
 
 
-
-
 /* --- Estilos para EditarPedido.jsx --- */
-
-.edit-pedido-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
+.p-editar-container {
+    background: #ffffff;
+    padding: 2rem;
+    color: #333333;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
 }
 
-.edit-pedido-container h2 {
-    color: #4a148c; /* Morado Oscuro */
-    margin-bottom: 10px;
-    text-align: center;
+.p-editar-container p {
+    margin-bottom: 1.5rem;
+    color: #1b1b1b;
 }
 
-.edit-pedido-container p {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #555;
+.p-detalle-container h4, .p-editar-container h4 {
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
-#fechaEntrega {
-   color: #000000;
-}
-.edit-pedido-form h3 {
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    color: #4a148c;
+.p-simple-form label, .p-editar-container label {
+    font-size: 20px;
+    color: #1a1a1a;
+    font-weight: 600;
 }
 
-.productos-list {
+.p-ActPedido {
+    background-color: #7c3aed;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.p-ActPedido:hover {
+    background-color: #5a2abf;
+    transform: translateY(-2px);
+}
+
+.p-input-todo {
+    width: 200px;
+    padding: 10px;
+    color: black;
+    font-size: 1rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.p-detalles-pedido {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
-.producto-item {
+.p-detalle-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 1rem;
     background-color: #f9f9f9;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
+    transition: background-color 0.3s;
 }
 
-.producto-nombre {
+.p-detalle-item:hover {
+    background-color: #f1f1f1;
+}
+
+.p-producto-nombre {
     font-weight: 500;
     flex-grow: 1;
 }
 
-.form-group-inline {
+.p-form-group-inline {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.form-group-inline label {
-    font-size: 0.9em;
+.p-form-group-inline label {
+    font-size: 1rem;
     color: #555;
 }
 
-.form-group-inline input {
+.p-form-group-inline input {
     width: 80px;
-    padding: 8px;
+    padding: 10px;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 1rem;
 }
 
-.error-text-inline {
+.p-error-text-inline {
     color: #e74c3c;
     font-size: 0.8em;
     position: absolute;
@@ -480,102 +614,986 @@ select {
     left: 0;
 }
 
-.btn-editar {
-    background-color: #f39c12; /* Naranja */
-    color: rgb(252, 252, 252);
+.p-btn-editar {
+    background-color: #f39c12;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 14px;
-    margin-left: 8px;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
-.btn-editar:hover {
+.p-btn-editar:hover {
     background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+.p-btn-cancel {
+  background-color: #e74c3c;
+}
+
+.p-btn-entregar {
+  background-color: #9b59b6;
+}
+
+.p-detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.p-status-management {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: -50px;
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.p-info-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.p-detalles-producto {
+  margin-bottom: 1rem;
+}
+
+.p-detalle-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.p-detalle-table th, .p-detalle-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  color: #000;
+}
+
+.p-detalle-table th {
+  background-color: #663dd4;
+  color: white;
+  font-weight: 600;
+}
+
+.p-detalle-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
+}
+
+/* ========================================
+   MEDIA QUERIES - RESPONSIVE
+   ======================================== */
+
+/* Pantallas grandes (entre 1301px y 1800px) */
+@media screen and (max-width: 1800px) and (min-width: 1301px) {
+  .p-consulta-container {
+    max-width: 95%;
+    margin: 30px auto;
+  }
 }
 
 
-/* Media Query para pantallas pequeñas (menores o iguales a 780px) */
+/* Pantallas grandes (entre 1301px y 1600px) */
+@media screen and (max-width: 1600px) and (min-width: 1301px) {
+  .p-menu-wrapper {
+    width: 90%;
+    max-width: 1500px;
+  }
+}
+
+/* Pantallas medianas grandes (entre 1025px y 1300px) */
+@media screen and (max-width: 1300px) and (min-width: 1025px) {
+  .p-consulta-container {
+    max-width: 95%;
+    margin: 25px auto;
+    padding: 25px;
+  }
+
+  .p-tabla-pedidos {
+    min-width: 1000px;
+    font-size: 13px;
+  }
+
+  .p-tabla-pedidos th,
+  .p-tabla-pedidos td {
+    padding: 10px 8px;
+  }
+
+  /* Menú pedidos */
+  .p-menu-wrapper {
+    width: 95%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 550px;
+    padding: 30px;
+    margin: 20px auto;
+  }
+  
+  .p-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .p-menu-btn {
+    width: 100%;
+    font-size: 20px;
+    padding: 18px;
+    height: 80px;
+  }
+
+  .p-icon {
+    font-size: 2.5rem;
+  }
+  
+  .p-menu-wrapper h2 {
+    font-size: 1.5rem;
+    margin-bottom: 35px;
+  }
+  
+  .p-volver-container {
+    margin-top: 40px;
+    text-align: right;
+    padding-right: 15px;
+  }
+}
+
+/* Tablets y pantallas medianas (entre 781px y 1024px) */
+@media screen and (max-width: 1024px) and (min-width: 781px) {
+  .p-consulta-container {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 95%;
+  }
+
+  .p-consulta-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .p-tabla-pedidos {
+    min-width: 900px;
+    font-size: 12px;
+  }
+
+  .p-tabla-pedidos th,
+  .p-tabla-pedidos td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .p-paginacion-controles {
+    gap: 10px;
+  }
+
+  .p-paginacion-info {
+    margin: 0 10px;
+    font-size: 13px;
+  }
+
+  .p-paginacion-resumen {
+    font-size: 13px;
+  }
+}
+
+/* Pantallas pequeñas - Tablets (menores o iguales a 780px) */
 @media screen and (max-width: 780px) {
-  .menu-pedido-wrapper {
-    width: 95% !important;
-    max-width: 450px !important;
-    height: auto !important;
-    min-height: 600px !important;
-    padding: 25px 20px !important;
-    margin: 15px auto !important;
-  }
-  
-  .menu-pedido-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 15px !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-    width: 100% !important;
+  .p-consulta-container {
+    margin: 15px auto;
+    padding: 15px;
+    max-width: 95%;
   }
 
-  .btn {
-    width: 100% !important;
-    font-size: 18px !important;
-    padding: 16px 12px !important;
-    height: 70px !important;
-    margin: 0 !important;
+  .p-consulta-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
   }
 
-  .icon {
-    font-size: 2.2rem !important;
-  }
-  
-  .menu-pedido-wrapper h2 {
-    font-size: 1.4rem !important;
-    margin-bottom: 25px !important;
+  .p-tabla-pedidos {
+    min-width: 800px;
+    font-size: 11px;
   }
 
-  .volver-container {
-    text-align: center !important;
-    padding: 0 !important;
-    margin-top: 25px !important;
+  .p-tabla-pedidos th,
+  .p-tabla-pedidos td {
+    padding: 8px 5px;
+    font-size: 11px;
+  }
+
+  .p-paginacion-controles {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .p-paginacion-grupo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .p-btn-purple {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+
+  .p-paginacion-info {
+    margin: 0 10px;
+    font-size: 12px;
+  }
+
+  .p-paginacion-resumen {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .p-volver-container {
+    text-align: center;
+    padding: 0;
+    margin-top: 25px;
   }
   
-  .volver {
-    padding: 12px 18px !important;
-    font-size: 0.9rem !important;
+  .p-volver {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* Menú pedidos */
+  .p-menu-wrapper {
+    width: 95%;
+    max-width: 450px;
+    height: auto;
+    min-height: 600px;
+    padding: 25px 20px;
+    margin: 15px auto;
+  }
+  
+  .p-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .p-menu-btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 16px 12px;
+    height: 70px;
+    margin: 0;
+  }
+
+  .p-icon {
+    font-size: 2.2rem;
+  }
+  
+  .p-menu-wrapper h2 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+  }
+
+  /* Formulario de registro */
+  .p-simple-form-container {
+    padding: 30px 20px;
+  }
+
+  .p-simple-form-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .p-form-buttons {
+    flex-direction: column;
+  }
+
+  .p-form-buttons button[type="submit"],
+  .p-form-buttons button[type="button"] {
+    width: 100%;
   }
 }
 
-/* Media Query adicional para pantallas muy pequeñas (móviles pequeños) */
+/* Móviles (menores o iguales a 480px) */
 @media screen and (max-width: 480px) {
-  .menu-pedido-wrapper {
-    width: 98% !important;
-    max-width: 350px !important;
-    padding: 20px 15px !important;
-    margin: 10px auto !important;
-  }
-  
-  .menu-empleado-grid {
-    gap: 12px !important;
-  }
-  
-  .btn {
-    font-size: 16px !important;
-    padding: 14px 10px !important;
-    height: 60px !important;
+  .p-consulta-container {
+    margin: 10px;
+    padding: 12px;
   }
 
-  .icon {
-    font-size: 1.8rem !important;
+  .p-consulta-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .p-tabla-pedidos {
+    min-width: 700px;
+    font-size: 10px;
+  }
+
+  .p-tabla-pedidos th,
+  .p-tabla-pedidos td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  .p-btn-purple {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .p-paginacion-info,
+  .p-paginacion-resumen {
+    font-size: 11px;
+  }
+
+  .p-volver {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+  }
+
+  /* Menú pedidos */
+  .p-menu-wrapper {
+    width: 98%;
+    max-width: 350px;
+    padding: 20px 15px;
+    margin: 10px auto;
   }
   
-  .menu-pedido-wrapper h2 {
-    font-size: 1.2rem !important;
-    margin-bottom: 20px !important;
+  .p-menu-grid {
+    gap: 12px;
   }
   
-  .volver {
-    padding: 10px 16px !important;
-    font-size: 0.8rem !important;
+  .p-menu-btn {
+    font-size: 16px;
+    padding: 14px 10px;
+    height: 60px;
+  }
+
+  .p-icon {
+    font-size: 1.8rem;
+  }
+  
+  .p-menu-wrapper h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Formulario de registro */
+  .p-simple-form-container {
+    padding: 25px 15px;
+  }
+
+  .p-simple-form-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .p-input-registrar {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   ESTILOS PARA REGISTRAR PEDIDO - FORMULARIO
+   ======================================== */
+
+.p-formulario-contenedor {
+  width: min(80vw, 960px);
+  min-height: min(80vh, 860px);
+  margin: 5vh auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e5e9;
+  display: flex;
+  flex-direction: column;
+}
+
+.p-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.p-formulario-titulo {
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  color: #2c3e50;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.p-formulario-mensaje-error {
+  padding: 12px 14px;
+  border: 1px solid #f3b2b2;
+  border-radius: 8px;
+  background: #fff1f1;
+  color: #b42318;
+  font-size: 0.92rem;
+}
+
+.p-formulario-grupo-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+.p-formulario-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.p-formulario-campo--ancho-completo {
+  grid-column: 1 / -1;
+}
+
+.p-formulario-etiqueta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #2c3e50;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.p-formulario-etiqueta::before {
+  content: "•";
+  color: #3498db;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.p-formulario-control,
+.p-formulario-select {
+  width: 100%;
+  height: 42px;
+  padding: 9px 12px;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-size: 0.92rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.p-formulario-control:focus,
+.p-formulario-select:focus {
+  outline: none;
+  border-color: #3498db;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+.p-formulario-control--destacado {
+  background: #e8f4fc;
+  border-color: #3498db;
+  font-weight: 600;
+}
+
+.p-formulario-control--cantidad {
+  width: 88px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.p-formulario-control[disabled],
+.p-formulario-select[disabled] {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.p-formulario-contador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p-formulario-boton-contador {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  background: #fff;
+  color: #007bff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  padding: 0;
+}
+
+.p-formulario-boton-contador:hover:not(:disabled) {
+  background: #007bff;
+  color: #fff;
+}
+
+.p-formulario-boton-contador:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.p-formulario-detalles {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+}
+
+.p-formulario-subtitulo {
+  margin: 0 0 15px;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.p-formulario-sin-detalles {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.p-formulario-lista-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.p-formulario-detalle-item {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-formulario-detalle-info {
+  flex: 1;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.p-formulario-detalle-valores {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.p-formulario-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.p-form-boton-agregar {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+.p-form-boton-agregar:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}
+
+.p-form-boton-agregar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.p-formulario-acciones-finales {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.p-form-boton-principal,
+.p-form-boton-secundario {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 140px;
+  height: 42px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.p-form-boton-principal {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.p-form-boton-principal:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+}
+
+.p-form-boton-principal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.p-form-boton-secundario {
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(149, 165, 166, 0.3);
+}
+
+.p-form-boton-secundario:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(149, 165, 166, 0.4);
+}
+
+.p-form-boton-secundario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Media queries para formulario de pedidos */
+@media screen and (max-width: 1800px) and (min-width: 1301px) {
+  .p-formulario-contenedor {
+    width: min(85vw, 880px);
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1301px) {
+  .p-formulario-contenedor {
+    width: min(80vw, 800px);
+  }
+
+  .p-formulario-grupo-campos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1025px) {
+  .p-formulario-contenedor {
+    width: min(85vw, 750px);
+    margin: 3vh auto;
+  }
+
+  .p-formulario-grupo-campos {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .p-formulario-control,
+  .p-formulario-select {
+    height: 40px;
+    font-size: 0.88rem;
+  }
+
+  .p-formulario-boton-contador {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 781px) {
+  .p-formulario-contenedor {
+    width: min(90vw, 600px);
+    margin: 3vh auto;
+    padding: 15px;
+  }
+
+  .p-formulario {
+    gap: 10px;
+  }
+
+  .p-formulario-titulo {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .p-formulario-grupo-campos {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .p-formulario-control,
+  .p-formulario-select {
+    height: 38px;
+    font-size: 0.88rem;
+    padding: 8px 10px;
+  }
+
+  .p-formulario-contador {
+    gap: 8px;
+  }
+
+  .p-formulario-boton-contador {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .p-formulario-detalle-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .p-formulario-detalle-valores {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .p-form-boton-principal,
+  .p-form-boton-secundario,
+  .p-form-boton-agregar {
+    min-width: 120px;
+    height: 38px;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .p-formulario-contenedor {
+    width: calc(100vw - 20px);
+    min-height: auto;
+    margin: 2vh auto;
+    padding: 12px;
+  }
+
+  .p-formulario {
+    gap: 8px;
+  }
+
+  .p-formulario-titulo {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .p-formulario-grupo-campos {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .p-formulario-campo {
+    gap: 4px;
+  }
+
+  .p-formulario-etiqueta {
+    font-size: 0.85rem;
+  }
+
+  .p-formulario-control,
+  .p-formulario-select {
+    height: 36px;
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+
+  .p-formulario-detalles {
+    margin: 15px 0;
+    padding: 12px;
+  }
+
+  .p-formulario-subtitulo {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .p-formulario-detalle-item {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .p-formulario-detalle-info {
+    font-size: 0.9rem;
+  }
+
+  .p-formulario-detalle-valores {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .p-formulario-contador {
+    gap: 6px;
+  }
+
+  .p-formulario-boton-contador {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .p-formulario-control--cantidad {
+    width: 70px;
+  }
+
+  .p-formulario-acciones,
+  .p-formulario-acciones-finales {
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .p-form-boton-agregar,
+  .p-form-boton-principal,
+  .p-form-boton-secundario {
+    flex: 1;
+    min-width: 100px;
+    height: 36px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .p-formulario-contenedor {
+    width: calc(100vw - 16px);
+    min-height: auto;
+    margin: 1vh auto;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .p-formulario {
+    gap: 6px;
+  }
+
+  .p-formulario-titulo {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+
+  .p-formulario-grupo-campos {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .p-formulario-campo {
+    gap: 4px;
+  }
+
+  .p-formulario-etiqueta {
+    font-size: 0.8rem;
+  }
+
+  .p-formulario-control,
+  .p-formulario-select {
+    height: 34px;
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+
+  .p-formulario-detalles {
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  .p-formulario-subtitulo {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .p-formulario-detalle-item {
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .p-formulario-detalle-info {
+    font-size: 0.85rem;
+  }
+
+  .p-formulario-detalle-valores {
+    width: 100%;
+    font-size: 0.75rem;
+    gap: 10px;
+  }
+
+  .p-formulario-contador {
+    gap: 4px;
+  }
+
+  .p-formulario-boton-contador {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .p-formulario-control--cantidad {
+    width: 60px;
+    font-size: 0.75rem;
+  }
+
+  .p-formulario-acciones,
+  .p-formulario-acciones-finales {
+    gap: 8px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+  }
+
+  .p-form-boton-agregar,
+  .p-form-boton-principal,
+  .p-form-boton-secundario {
+    width: calc(50% - 4px);
+    min-width: auto;
+    height: 34px;
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+
+  .p-form-boton-agregar {
+    width: 100%;
   }
 }

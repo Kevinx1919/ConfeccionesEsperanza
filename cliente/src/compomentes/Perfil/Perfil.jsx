@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 import './Perfil.css';
 
 const Perfil = () => {
@@ -24,7 +25,7 @@ const Perfil = () => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://localhost:7232/api/Auth/profile', {
+      const response = await fetch(apiUrl('/api/Auth/profile'), {
         method: 'GET',
         headers: getAuthHeaders()
       });
@@ -63,7 +64,7 @@ const Perfil = () => {
     setSuccess('');
 
     try {
-      const response = await fetch('https://localhost:7232/api/Auth/profile', {
+      const response = await fetch(apiUrl('/api/Auth/profile'), {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(editFormData)

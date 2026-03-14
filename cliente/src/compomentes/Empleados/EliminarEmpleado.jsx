@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
 import './Emplado.css';
 
-const API_URL = 'https://localhost:7232/api/User';
+const API_URL = apiUrl('/api/User');
 
 function EliminarEmpleado() {
   const { id } = useParams();

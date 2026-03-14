@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 
 const ListarEmpleados = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const ListarEmpleados = () => {
       setLoading(true);
       const token = localStorage.getItem('token');
       
-      const response = await fetch('https://localhost:7232/api/User', {
+      const response = await fetch(apiUrl('/api/User'), {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -33,8 +35,9 @@ const ListarEmpleados = () => {
       }
 
       const data = await response.json();
-      setEmpleados(data.users || []);
-      setFilteredEmpleados(data.users || []);
+      const usuariosRecibidos = readCollection(data, ['users']);
+      setEmpleados(usuariosRecibidos);
+      setFilteredEmpleados(usuariosRecibidos);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching empleados:', err);

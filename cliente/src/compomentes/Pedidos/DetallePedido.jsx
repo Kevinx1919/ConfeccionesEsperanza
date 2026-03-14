@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './Pedido.css'; 
+import { apiUrl } from '../../config/api';
+import './Pedido.css';
 
 // --- Configuración de API (DEBE SER REEMPLAZADO POR UN MÓDULO API REAL) ---
-const API_URL = 'https://localhost:7232/api/Order';
+const API_URL = apiUrl('/api/Order');
 
 const fetchPedidoDetalles = async (id) => {
     const token = localStorage.getItem('token');
@@ -30,10 +31,10 @@ const updatePedidoStatus = async (id, action) => {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
     });
     const result = await response.json();
-    if (!response.ok || !result.isSuccess) {
-        throw new Error(result.message || 'Error desconocido al actualizar el estado.');
+    if (!response.ok || !(result.isSuccess || result.IsSuccess)) {
+        throw new Error(result.message || result.Message || 'Error desconocido al actualizar el estado.');
     }
-    return result.pedido; // Retorna el PedidoInfoDTo actualizado
+    return result.pedido || result.Pedido;
 };
 // --------------------------------------------------------------------------
 
@@ -162,11 +163,11 @@ const DetallePedido = () => {
 
     // A partir de aquí, 'pedido' ya tiene datos, evitando el error "lectura 'estadoDescripcion'"
     return (
-        <div className="detalle-container">
-            <header className="detalle-header">
+        <div className="p-detalle-container">
+            <header className="p-detalle-header">
                 <h2>Detalles del Pedido #{pedido.idPedido}</h2>
                 {/* Comprobación de estado removida del return, ya que las comprobaciones de arriba garantizan que 'pedido' no es null */}
-                <div className={`estado-tag estado-${pedido.estado}`}>
+                <div className={`p-estado-tag p-estado-${pedido.estado}`}>
                     {pedido.estadoDescripcion}
                 </div>
             </header>
@@ -175,41 +176,41 @@ const DetallePedido = () => {
             {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
 
             {/* Sección de Gestión de Estados (Lógica de Deshabilitado Reforzada) */}
-            <div className="status-management">
-                <h3>Gestión de Estado</h3>
+            <div className="p-status-management">
+                <h4>Gestión de Estado</h4>
                 
                 <button 
                     onClick={() => handleEstadoChange('iniciar')} 
                     disabled={loading || !canTransition(pedido.estado, getTargetStatus('iniciar'))}
-                    className="btn-status btn-purple"
+                    className="p-btn-status blue"
                 >
                     En Proceso
                 </button>
                 <button 
                     onClick={() => handleEstadoChange('producir')} 
                     disabled={loading || !canTransition(pedido.estado, getTargetStatus('producir'))}
-                    className="btn-status btn-purple"
+                    className="p-btn-status orange"
                 >
                     En Producción
                 </button>
                 <button 
                     onClick={() => handleEstadoChange('completar')} 
                     disabled={loading || !canTransition(pedido.estado, getTargetStatus('completar'))}
-                    className="btn-status btn-purple"
+                    className="p-btn-status purple"
                 >
                     Completado
                 </button>
                 <button 
                     onClick={() => handleEstadoChange('cancelar')} 
                     disabled={loading || !canTransition(pedido.estado, getTargetStatus('cancelar'))}
-                    className="btn-status btn-cancel"
+                    className="p-btn-status p-btn-cancel"
                 >
                     Cancelado
                 </button>
                 <button 
                     onClick={() => handleEstadoChange('entregar')} 
                     disabled={loading || !canTransition(pedido.estado, getTargetStatus('entregar'))}
-                    className="btn-status btn-entregar"
+                    className="p-btn-status green"
                 >
                     Marcar Entregado
                 </button>
@@ -218,7 +219,7 @@ const DetallePedido = () => {
             <hr />
             
             {/* Información General del Pedido */}
-            <div className="info-card">
+            <div className="p-info-card">
                 <h3>Información General</h3>
                 <p><strong>Cliente:</strong> {pedido.clienteNombre} ({pedido.clienteEmail})</p>
                 <p><strong>Fecha Registro:</strong> {new Date(pedido.fechaRegistro).toLocaleDateString()}</p>
@@ -229,9 +230,9 @@ const DetallePedido = () => {
             <hr />
 
             {/* Detalles de Productos */}
-            <div className="detalles-producto">
-                <h3>Productos Solicitados ({pedido.totalItems} ítems)</h3>
-                <table className="detalle-table">
+            <div className="p-detalles-producto">
+                <h4>Productos Solicitados ({pedido.totalItems} ítems)</h4>
+                <table className="p-detalle-table">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -254,9 +255,9 @@ const DetallePedido = () => {
                 </table>
             </div>
 
-            <footer className="detalle-footer">
-                <p className="total-final"><strong>TOTAL PEDIDO:</strong> ${pedido.totalPedido?.toFixed(2)}</p>
-                <button className="btn-purple" onClick={() => navigate('/consularPedido')}>Volver a Consultar</button>
+            <footer className="p-detalle-footer">
+                <p className="p-total-final"><strong>TOTAL PEDIDO:</strong> ${pedido.totalPedido?.toFixed(2)}</p>
+                <button className="p-menu-btn purple" onClick={() => navigate('/consultarPedido')}>Volver a Consultar</button>
             </footer>
         </div>
     );

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection, readValue } from '../../utils/apiResponse';
 import './Pedido.css';
 
-const API_BASE_URL = 'https://localhost:7232/api/Order';
+const ORDER_API_URL = apiUrl('/api/Order');
 
 const getPedidos = async ({
   clienteId = '',
@@ -24,7 +26,7 @@ const getPedidos = async ({
   params.append('PageNumber', pageNumber);
   params.append('PageSize', pageSize);
 
-  const url = `${API_BASE_URL}?${params.toString()}`;
+  const url = `${ORDER_API_URL}?${params.toString()}`;
 
   const response = await fetch(url, {
     method: 'GET',
@@ -78,11 +80,11 @@ const ConsultarPedido = () => {
         pageNumber: currentPage,
         pageSize: pedidosPorPagina
       });
-      let fetchedPedidos = data.pedidos || [];
+      let fetchedPedidos = readCollection(data, ['pedidos', 'orders', 'items', 'data']);
       fetchedPedidos.sort((b, a) => b.idPedido - a.idPedido);
 
-      setPedidos(fetchedPedidos); // Usamos el array ya ordenado
-      setTotalCount(data.totalCount || 0);
+      setPedidos(fetchedPedidos);
+      setTotalCount(readValue(data, ['totalCount', 'TotalCount'], 0));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -99,16 +101,15 @@ const ConsultarPedido = () => {
   }, [clienteId, estado, fechaDesde, fechaHasta, estaVencido, currentPage]);
 
   // Handlers de paginación
-  const goToPage = (pageNumber) => setCurrentPage(pageNumber);
   const goToPreviousPage = () => setCurrentPage(prev => Math.max(prev - 1, 1));
   const goToNextPage = () => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(totalCount / pedidosPorPagina)));
 
-  const handleVolver = () => navigate('/pedidos/menu');
+  const handleVolver = () => navigate('/pedidos');
 
   // Render
   if (loading) {
     return (
-      <div className="consulta-container">
+      <div className="p-consulta-container">
         <h2>Cargando pedidos...</h2>
       </div>
     );
@@ -116,9 +117,9 @@ const ConsultarPedido = () => {
 
   if (error) {
     return (
-      <div className="consulta-container">
+      <div className="p-consulta-container">
         <h2>❌ Error al cargar los datos: {error}</h2>
-        <button onClick={fetchPedidos} className="btn blue" style={{ marginTop: '20px' }}>
+        <button onClick={fetchPedidos} className="p-btn-purple" style={{ marginTop: '20px' }}>
           Reintentar
         </button>
       </div>
@@ -126,8 +127,8 @@ const ConsultarPedido = () => {
   }
 
   return (
-    <div className="consulta-container">
-      <div className="acciones-header">
+    <div className="p-consulta-container">
+      <div className="p-acciones-header">
         <h2>Lista de Pedidos</h2>
         <div style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -136,7 +137,7 @@ const ConsultarPedido = () => {
                 type="text"
                 placeholder="ID de cliente"
                 value={clienteId}
-                className='input-cliente'
+                className='p-input-cliente'
                 onChange={(e) => setClienteId(e.target.value)}
                 style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc' }}
             />
@@ -145,7 +146,7 @@ const ConsultarPedido = () => {
             <span style={{ fontSize: '12px', color: '#555', marginBottom: '2px', marginLeft: '4px' }}>Estado</span>
             <select
               value={estado}
-              className='select-estado'
+              className='p-select-estado'
               onChange={(e) => setEstado(e.target.value)}
               style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc', color: '#000000ff', fontSize: '13px', width: '120px' }}
             >
@@ -163,7 +164,7 @@ const ConsultarPedido = () => {
             <input
               type="date"
               value={fechaDesde}
-              className='input-desde'
+              className='p-input-desde'
               onChange={(e) => setFechaDesde(e.target.value)}
               style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '13px', width: '120px' }}
             />
@@ -173,7 +174,7 @@ const ConsultarPedido = () => {
             <input
               type="date"
               value={fechaHasta}
-              className='input-hasta'
+              className='p-input-hasta'
               onChange={(e) => setFechaHasta(e.target.value)}
               style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc', fontSize: '13px', width: '120px' }}
             />
@@ -182,7 +183,7 @@ const ConsultarPedido = () => {
             <span style={{ fontSize: '12px', color: '#555', marginBottom: '2px', marginLeft: '4px' }}>Vencidos</span>
             <select
               value={estaVencido}
-              className='select-vencido'
+              className='p-select-vencido'
               onChange={(e) => setEstaVencido(e.target.value)}
               style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc', color: '#000000ff', fontSize: '13px', width: '120px' }}
             >
@@ -191,7 +192,7 @@ const ConsultarPedido = () => {
               <option value="false">Solo no vencidos</option>
             </select>
           </div>
-          <button onClick={() => { setCurrentPage(1); fetchPedidos(); }} className="btn-purple">
+          <button onClick={() => { setCurrentPage(1); fetchPedidos(); }} className="p-btn-purple">
             Aplicar Filtros
           </button>
         </div>
@@ -204,7 +205,7 @@ const ConsultarPedido = () => {
         </div>
       ) : (
         <>
-          <table className="tabla-pedidos">
+          <table className="p-tabla-pedidos">
             <thead>
               <tr>
                 <th>ID</th>
@@ -227,26 +228,21 @@ const ConsultarPedido = () => {
                   <td>{new Date(pedido.fechaRegistro).toLocaleDateString()}</td>
                   <td>{new Date(pedido.fechaEntrega).toLocaleDateString()}</td>
                   <td>
-                    <span className={`estado-badge estado-${pedido.estado}`}>
+                    <span className={`p-estado-badge p-estado-${pedido.estado}`}>
                       {pedido.estadoDescripcion}
                     </span>
-                    {pedido.estaVencido && <span className="vencido-tag"> (Vencido)</span>}
+                    {pedido.estaVencido && <span className="p-vencido-tag"> (Vencido)</span>}
                   </td>
                   <td>${pedido.totalPedido?.toFixed(2)}</td>
                   <td>{pedido.totalItems}</td>
                   <td>
                     <button 
                       onClick={() => navigate(`/detallePedido/${pedido.idPedido}`)}
-                      className="btn-purple"
-                      style={{ padding: '8px 12px', fontSize: '14px' }}
+                      className="purple"
                     >
-                      Ver Detalle
+                      📋
                     </button>
-                    <button 
-                    onClick={() => navigate(`/pedidos/editar/${pedido.idPedido}`)}
-                    className="btn-editar"> {/* Puedes darle un estilo propio */}
-                    Editar
-                    </button>
+                    <button onClick={() => navigate(`/editarPedido/${pedido.idPedido}`)}className='p-btn-editar'>✏️</button>
                   </td>
                 </tr>
               ))}
@@ -254,11 +250,11 @@ const ConsultarPedido = () => {
           </table>
 
           {/* Paginación */}
-          <div className="paginacion-controles">
+          <div className="p-paginacion-controles">
             <button
               onClick={goToPreviousPage}
               disabled={currentPage === 1}
-              className="btn-purple"
+              className="purple"
               style={{ padding: '10px', fontSize: '14px', opacity: currentPage === 1 ? '0.6' : '1' }}
             >
               ← Anterior
@@ -269,7 +265,7 @@ const ConsultarPedido = () => {
             <button
               onClick={goToNextPage}
               disabled={currentPage === Math.ceil(totalCount / pedidosPorPagina) || totalCount === 0}
-              className="btn-purple"
+              className="purple"
               style={{ padding: '10px', fontSize: '14px', opacity: currentPage === Math.ceil(totalCount / pedidosPorPagina) || totalCount === 0 ? '0.6' : '1' }}
             >
               Siguiente →
@@ -280,8 +276,8 @@ const ConsultarPedido = () => {
 
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '30px', paddingRight: '20px' }}>
         <button 
-          onClick={() => navigate('/pedidos')}
-          className="volver"
+          onClick={handleVolver}
+          className="p-volver"
         >
           Volver
         </button>

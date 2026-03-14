@@ -6,21 +6,21 @@ const MenuPedido = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="menu-pedido-wrapper">
-      <h2>Pediddos</h2>
-      <div className="menu-pedido-grid">
-        <button className="btn blue" onClick={() => navigate('/registarPedido')}>
-          <span className="icon">+</span> Registrar pedido
+    <div className="p-menu-wrapper">
+      <h2>Pedidos</h2>
+      <div className="p-menu-grid">
+        <button className="p-menu-btn blue" onClick={() => navigate('/registrarPedido')}>
+          <span className="p-icon">+</span> Registrar pedido
         </button>
-        <button className="btn orange" onClick={() => navigate('/consularPedido')}>
-          <span className="icon">📦</span> Consultar pedidos
+        <button className="p-menu-btn orange" onClick={() => navigate('/consultarPedido')}>
+          <span className="p-icon">📦</span> Consultar pedidos
         </button>
-        <button className="btn purple">
-          <span className="icon">📊</span> Reposte de avance
+        <button className="p-menu-btn purple">
+          <span className="p-icon">📊</span> Reposte de avance
         </button>
       </div>
-      <div className="volver-container">
-        <button className="volver" onClick={() => navigate('/')}>
+      <div className="p-volver-container">
+        <button className="p-volver" onClick={() => navigate('/')}>
           Volver
         </button>
       </div>

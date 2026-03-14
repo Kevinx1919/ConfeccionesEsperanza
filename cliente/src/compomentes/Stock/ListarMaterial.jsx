@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../config/api';
+import { readCollection } from '../../utils/apiResponse';
 import './Stock.css';
 
-const ListarMaterial = () => {
+const API_URL_MATERIAL = apiUrl('/api/Material');
+
+function ListarMaterial() {
   const navigate = useNavigate();
   const [materiales, setMateriales] = useState([]);
-  const [filteredMateriales, setFilteredMateriales] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [materialesFiltrados, setMaterialesFiltrados] = useState([]);
+  const [terminoBusqueda, setTerminoBusqueda] = useState('');
+  const [paginaActual, setPaginaActual] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  
+  const [error, setError] = useState('');
+
   const materialesPorPagina = 5;
 
-  // Función para obtener materiales de la API
   const fetchMateriales = async () => {
     try {
       setLoading(true);
+      setError('');
       const token = localStorage.getItem('token');
-      
-      const response = await fetch('https://localhost:7232/api/Material', {
+
+      const response = await fetch(API_URL_MATERIAL, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -32,15 +36,12 @@ const ListarMaterial = () => {
       }
 
       const data = await response.json();
-      
-      // Asegurarnos de que siempre sea un array
-      const materialesArray = Array.isArray(data) ? data : (data.materiales || []);
-      
-      setMateriales(materialesArray);
-      setFilteredMateriales(materialesArray);
-    } catch (err) {
-      setError(err.message);
-      console.error('Error fetching materiales:', err);
+      const materialesRecibidos = readCollection(data, ['materiales']);
+
+      setMateriales(materialesRecibidos);
+      setMaterialesFiltrados(materialesRecibidos);
+    } catch (fetchError) {
+      setError(fetchError.message || 'No se pudo cargar el listado de materiales');
     } finally {
       setLoading(false);
     }
@@ -50,54 +51,48 @@ const ListarMaterial = () => {
     fetchMateriales();
   }, []);
 
-  // Función para filtrar materiales
   useEffect(() => {
-    if (!Array.isArray(materiales)) {
-      setFilteredMateriales([]);
+    if (!terminoBusqueda.trim()) {
+      setMaterialesFiltrados(materiales);
+      setPaginaActual(1);
       return;
     }
 
-    if (searchTerm === '') {
-      setFilteredMateriales(materiales);
-    } else {
-      const filtered = materiales.filter(material =>
-        material.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        material.proveedor?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        material.cantidad?.toString().includes(searchTerm) ||
-        material.tipoMaterial?.descripcionMaterial?.toLowerCase().includes(searchTerm.toLowerCase())
+    const busquedaNormalizada = terminoBusqueda.toLowerCase();
+    const materialesCoincidentes = materiales.filter((material) => {
+      const nombre = material.nombre?.toLowerCase() || '';
+      const proveedor = material.proveedor?.toLowerCase() || '';
+      const cantidad = material.cantidad?.toString() || '';
+      const tipoMaterial =
+        material.tipoMaterialDescripcion?.toLowerCase() ||
+        material.tipoMaterial?.descripcionMaterial?.toLowerCase() ||
+        '';
+      const color =
+        material.colorDescripcion?.toLowerCase() ||
+        material.color?.descripcionColor?.toLowerCase() ||
+        '';
+
+      return (
+        nombre.includes(busquedaNormalizada) ||
+        proveedor.includes(busquedaNormalizada) ||
+        cantidad.includes(busquedaNormalizada) ||
+        tipoMaterial.includes(busquedaNormalizada) ||
+        color.includes(busquedaNormalizada)
       );
-      setFilteredMateriales(filtered);
-    }
-    setCurrentPage(1);
-  }, [searchTerm, materiales]);
+    });
 
-  // Cálculos para la paginación - CON VALIDACIÓN
-  const materialesArray = Array.isArray(filteredMateriales) ? filteredMateriales : [];
-  const indexOfLastMaterial = currentPage * materialesPorPagina;
-  const indexOfFirstMaterial = indexOfLastMaterial - materialesPorPagina;
-  const materialesActuales = materialesArray.slice(indexOfFirstMaterial, indexOfLastMaterial);
-  const totalPaginas = Math.ceil(materialesArray.length / materialesPorPagina);
+    setMaterialesFiltrados(materialesCoincidentes);
+    setPaginaActual(1);
+  }, [terminoBusqueda, materiales]);
 
-  // Funciones de navegación de páginas
-  const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const goToPreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
-
-  const goToNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPaginas));
-  };
-
-  const handleVolver = () => {
-    navigate('/stock');
-  };
+  const indexUltimoMaterial = paginaActual * materialesPorPagina;
+  const indexPrimerMaterial = indexUltimoMaterial - materialesPorPagina;
+  const materialesActuales = materialesFiltrados.slice(indexPrimerMaterial, indexUltimoMaterial);
+  const totalPaginas = Math.max(1, Math.ceil(materialesFiltrados.length / materialesPorPagina));
 
   if (loading) {
     return (
-      <div className="consulta-container">
+      <div className="stock-cargando-panel">
         <h2>Cargando materiales...</h2>
       </div>
     );
@@ -105,9 +100,13 @@ const ListarMaterial = () => {
 
   if (error) {
     return (
-      <div className="consulta-container">
+      <div className="stock-error-panel">
         <h2>Error: {error}</h2>
-        <button onClick={fetchMateriales} className="btn blue">
+        <button
+          id="boton_reintentar_carga_listado_stock"
+          className="stock-listado-boton-reintentar boton_reintentar_carga_listado_stock"
+          onClick={fetchMateriales}
+        >
           Reintentar
         </button>
       </div>
@@ -115,121 +114,158 @@ const ListarMaterial = () => {
   }
 
   return (
-    <div className="consulta-container">
-      <div className="acciones-header">
-        <h2>Lista de Materiales</h2>
-        <input
-          type="text"
-          placeholder="Buscar material..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ width: '300px' }}
-        />
+    <div className="stock-formulario-contenedor stock-listado-panel">
+      <div className="stock-listado-encabezado">
+        <h2 className="stock-formulario-titulo stock-listado-titulo">Lista de Materiales</h2>
+        <div className="stock-listado-barra-herramientas">
+          <div className="stock-formulario-campo stock-listado-campo-busqueda">
+            <label
+              className="stock-formulario-etiqueta"
+              htmlFor="campo_busqueda_material_listado_stock"
+            >
+              Buscar material
+            </label>
+            <input
+              id="campo_busqueda_material_listado_stock"
+              className="stock-formulario-control stock-listado-buscador"
+              type="text"
+              placeholder="Nombre, proveedor, tipo o color"
+              value={terminoBusqueda}
+              onChange={(event) => setTerminoBusqueda(event.target.value)}
+            />
+          </div>
+        </div>
       </div>
 
       {materialesActuales.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '2rem' }}>
+        <div className="stock-listado-vacio">
           <h3>No se encontraron materiales</h3>
-          <p>{searchTerm ? 'Intenta con otros términos de búsqueda' : 'No hay materiales registrados'}</p>
+          <p>
+            {terminoBusqueda
+              ? 'Intenta con otros terminos de busqueda.'
+              : 'No hay materiales registrados.'}
+          </p>
         </div>
       ) : (
         <>
-          <table className="tabla-materiales">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Fecha Entrada</th>
-                <th>Proveedor</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {materialesActuales.map((material) => (
-                <tr key={material.idMaterial || material.id}>
-                  <td>{material.idMaterial || material.id}</td>
-                  <td>{material.nombre}</td>
-                  <td>{material.cantidad}</td>
-                  <td>{material.fechaEntrada ? new Date(material.fechaEntrada).toLocaleDateString() : 'N/A'}</td>
-                  <td>{material.proveedor}</td>
-                  <td>
-                    <button 
-                      onClick={() => navigate(`/editarMaterial/${material.idMaterial || material.id}`)}
-                      style={{ marginRight: '5px' }}
-                    >
-                      ✏️
-                    </button>
-                    <button 
-                      onClick={() => navigate(`/eliminarMaterial/${material.idMaterial || material.id}`)}
-                    >
-                      🗑️
-                    </button>
-                  </td>
+          <div className="stock-listado-tabla-marco">
+            <table className="stock-tabla-materiales">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Cantidad</th>
+                  <th>Fecha Entrada</th>
+                  <th>Proveedor</th>
+                  <th>Color</th>
+                  <th>Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {materialesActuales.map((material) => {
+                  const materialId = material.idMaterial || material.id;
 
-          {/* Controles de paginación */}
-          <div className="paginacion-controles">
-            <div className="paginacion-grupo">
+                  return (
+                    <tr key={materialId}>
+                      <td>{materialId}</td>
+                      <td>{material.nombre}</td>
+                      <td>{material.tipoMaterialDescripcion || 'Sin tipo'}</td>
+                      <td>{material.cantidad}</td>
+                      <td>
+                        {material.fechaEntrada
+                          ? new Date(material.fechaEntrada).toLocaleDateString()
+                          : 'N/A'}
+                      </td>
+                      <td>{material.proveedor}</td>
+                      <td>{material.colorDescripcion || 'No especificado'}</td>
+                      <td className="stock-tabla-celda-acciones">
+                        <button
+                          id={`boton_editar_material_listado_stock_${materialId}`}
+                          className={`stock-tabla-boton-accion stock-tabla-boton-accion--editar boton_editar_material_listado_stock_${materialId}`}
+                          onClick={() => navigate(`/editarMaterial/${materialId}`)}
+                          title="Editar material"
+                        >
+                          ✏️
+                        </button>
+                        <button
+                          id={`boton_eliminar_material_listado_stock_${materialId}`}
+                          className={`stock-tabla-boton-accion stock-tabla-boton-accion--eliminar boton_eliminar_material_listado_stock_${materialId}`}
+                          onClick={() => navigate(`/eliminarMaterial/${materialId}`)}
+                          title="Eliminar material"
+                        >
+                          🗑️
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="stock-paginacion-contenedor">
+            <div className="stock-paginacion-grupo">
               <button
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-                className="btn-paginacion"
+                id="boton_paginacion_anterior_listado_stock"
+                className="stock-paginacion-boton boton_paginacion_anterior_listado_stock"
+                onClick={() => setPaginaActual((prev) => Math.max(prev - 1, 1))}
+                disabled={paginaActual === 1}
               >
                 ← Anterior
               </button>
-              
-              <span className="info-pagina">
-                Página {currentPage} de {totalPaginas}
+
+              <span className="stock-paginacion-texto">
+                Pagina {paginaActual} de {totalPaginas}
               </span>
-              
+
               <button
-                onClick={goToNextPage}
-                disabled={currentPage === totalPaginas}
-                className="btn-paginacion"
+                id="boton_paginacion_siguiente_listado_stock"
+                className="stock-paginacion-boton boton_paginacion_siguiente_listado_stock"
+                onClick={() => setPaginaActual((prev) => Math.min(prev + 1, totalPaginas))}
+                disabled={paginaActual === totalPaginas}
               >
                 Siguiente →
               </button>
             </div>
 
-            <div className="paginacion-grupo">
-              <span className="info-contador">
-                Mostrando {indexOfFirstMaterial + 1} a{' '}
-                {Math.min(indexOfLastMaterial, materialesArray.length)} de{' '}
-                {materialesArray.length} materiales
+            <div className="stock-paginacion-grupo">
+              <span className="stock-paginacion-resumen">
+                Mostrando {materialesFiltrados.length === 0 ? 0 : indexPrimerMaterial + 1} a{' '}
+                {Math.min(indexUltimoMaterial, materialesFiltrados.length)} de{' '}
+                {materialesFiltrados.length} materiales
               </span>
-              
-              {totalPaginas > 1 && (
+
+              {totalPaginas > 1 ? (
                 <select
-                  value={currentPage}
-                  onChange={(e) => goToPage(Number(e.target.value))}
-                  className="select-pagina"
+                  id="selector_pagina_listado_stock"
+                  className="stock-paginacion-selector"
+                  value={paginaActual}
+                  onChange={(event) => setPaginaActual(Number(event.target.value))}
                 >
-                  {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(pageNum => (
-                    <option key={pageNum} value={pageNum}>
-                      Página {pageNum}
+                  {Array.from({ length: totalPaginas }, (_, index) => index + 1).map((pageNumber) => (
+                    <option key={pageNumber} value={pageNumber}>
+                      Pagina {pageNumber}
                     </option>
                   ))}
                 </select>
-              )}
+              ) : null}
             </div>
           </div>
         </>
       )}
 
-      <div className="volver-container" style={{ marginTop: '30px' }}>
-        <button 
-          onClick={handleVolver}
-          className="btn volver"
+      <div className="stock-listado-acciones-finales">
+        <button
+          id="boton_volver_menu_desde_listado_stock"
+          className="stock-listado-boton-volver boton_volver_menu_desde_listado_stock"
+          onClick={() => navigate('/stock')}
         >
-          Volver al Menú Stock
+          Volver al Menu Stock
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default ListarMaterial;

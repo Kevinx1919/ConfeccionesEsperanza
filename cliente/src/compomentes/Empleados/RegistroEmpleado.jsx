@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { apiUrl } from '../../config/api';
 import './Emplado.css';
 
 const RegistroEmpleado = () => {
@@ -26,7 +27,7 @@ const RegistroEmpleado = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('https://localhost:7232/api/Roles', {
+      const response = await fetch(apiUrl('/api/Roles'), {
         headers: getAuthHeaders()
       });
       if (response.ok) {
@@ -75,7 +76,7 @@ const RegistroEmpleado = () => {
         phoneNumber: formData.phoneNumber,
         roles: formData.roles
       };
-      const response = await fetch('https://localhost:7232/api/User', {
+      const response = await fetch(apiUrl('/api/User'), {
         method: 'POST',
         headers: {
           ...getAuthHeaders(),
