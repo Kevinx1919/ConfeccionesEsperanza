@@ -20,7 +20,7 @@ const MenuPedido = () => {
               Pedidos
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-              Registra, consulta y gestiona pedidos con una interfaz consistente y estable.
+              Registra, consulta y gestiona pedidos.
             </p>
           </div>
         </div>

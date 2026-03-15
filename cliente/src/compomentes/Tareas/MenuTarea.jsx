@@ -1,34 +1,108 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Tareas.css';
+import { ArrowLeft, BarChart3, ClipboardList, HardHat, Plus } from 'lucide-react';
 
-const MenuTarea = () => {
+function MenuTarea() {
   const navigate = useNavigate();
 
   return (
-    <div className="menu-tarea-wrapper">
-      <h2>Tareas</h2>
-      <div className="menu-tarea-grid">
-        <button className="btn blue" onClick={() => navigate('/registrarTarea')}>
-          <span className="icon">+</span> Registrar tarea
-        </button>
-        <button className="btn orange" onClick={() => navigate('/consultarTareas')}>
-          <span className="icon">📋</span> Consultar tarea
-        </button>
-        <button className="btn green" onClick={() => navigate('/asignacionTarea')}>
-          <span className="icon">👷</span> Asignar tareas
-        </button>
-        <button className="btn purple">
-          <span className="icon">📊</span> Generar reporte
-        </button>
-      </div>
-      <div className="volver-container">
-        <button className="volver" onClick={() => navigate('/')}>
-          Volver
-        </button>
-      </div>
+    <div className="mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
+      <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white/95 shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
+        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_55%,#fdf2f8_100%)] px-5 py-8 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
+              Flujo operativo
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Tareas
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
+              Organiza tareas y asigna responsables.
+            </p>
+          </div>
+        </div>
+
+        <div className="px-5 py-6 sm:px-8 sm:py-8">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <button
+              id="boton_registrar_tarea_menu_tarea"
+              className="group flex min-h-28 items-center justify-between rounded-2xl border border-sky-200 bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(37,99,235,0.85)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(37,99,235,0.95)] focus:outline-none focus:ring-4 focus:ring-sky-200 boton_registrar_tarea_menu_tarea"
+              onClick={() => navigate('/registrarTarea')}
+            >
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-sky-100/90">
+                  Crear
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">Registrar tarea</p>
+              </div>
+              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
+                <Plus className="h-7 w-7" strokeWidth={2.5} />
+              </span>
+            </button>
+
+            <button
+              id="boton_consultar_tarea_menu_tarea"
+              className="group flex min-h-28 items-center justify-between rounded-2xl border border-amber-200 bg-[linear-gradient(135deg,#f59e0b_0%,#f97316_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(249,115,22,0.85)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(249,115,22,0.95)] focus:outline-none focus:ring-4 focus:ring-amber-200 boton_consultar_tarea_menu_tarea"
+              onClick={() => navigate('/consultarTareas')}
+            >
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-50/90">
+                  Revision
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">Consultar tareas</p>
+              </div>
+              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
+                <ClipboardList className="h-7 w-7" strokeWidth={2.2} />
+              </span>
+            </button>
+
+            <button
+              id="boton_asignar_tarea_menu_tarea"
+              className="group flex min-h-28 items-center justify-between rounded-2xl border border-emerald-200 bg-[linear-gradient(135deg,#10b981_0%,#059669_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(5,150,105,0.75)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(5,150,105,0.9)] focus:outline-none focus:ring-4 focus:ring-emerald-200 boton_asignar_tarea_menu_tarea"
+              onClick={() => navigate('/asignacionTarea')}
+            >
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-50/90">
+                  Produccion
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">Asignar tareas</p>
+              </div>
+              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
+                <HardHat className="h-7 w-7" strokeWidth={2.2} />
+              </span>
+            </button>
+
+            <button
+              id="boton_reporte_tarea_menu_tarea"
+              className="group flex min-h-28 items-center justify-between rounded-2xl border border-violet-200 bg-[linear-gradient(135deg,#8b5cf6_0%,#7c3aed_55%,#4f46e5_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(124,58,237,0.8)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(99,102,241,0.95)] focus:outline-none focus:ring-4 focus:ring-violet-200 boton_reporte_tarea_menu_tarea"
+              type="button"
+            >
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-100/90">
+                  Analisis
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">Generar reporte</p>
+              </div>
+              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
+                <BarChart3 className="h-7 w-7" strokeWidth={2.2} />
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-8 flex justify-center md:justify-end">
+            <button
+              id="boton_volver_menu_principal_tarea"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 boton_volver_menu_principal_tarea"
+              onClick={() => navigate('/')}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Volver
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
+}
 
 export default MenuTarea;
