@@ -17,8 +17,7 @@ function MenuStock() {
               Stock
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-              Administra materiales con una interfaz estable, clara y adaptable a escritorio,
-              tablet y movil.
+              Administra materiales.
             </p>
           </div>
         </div>

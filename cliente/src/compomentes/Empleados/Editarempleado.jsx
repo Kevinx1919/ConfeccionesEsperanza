@@ -216,7 +216,7 @@ function EditarEmpleado() {
               Editar Empleado
             </h2>
             <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-              Actualiza datos de acceso, estado de la cuenta y roles con una vista consistente y estable.
+              Actualiza datos de acceso, estado de la cuenta y roles. 
             </p>
           </div>
         </div>

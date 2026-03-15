@@ -17,7 +17,7 @@ function MenuEmpleado() {
               Empleados
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-              Administra usuarios, revisa estados y mantén el modulo estable en cualquier tamaño de pantalla.
+              Administra usuarios y revisa estados.
             </p>
           </div>
         </div>
