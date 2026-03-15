@@ -263,7 +263,7 @@ function Dashboard() {
                 Dashboard de Operacion
               </h1>
               <p className="mt-1 text-[11px] leading-4 text-slate-600">
-                Un resumen claro de pedidos, riesgos, ventas y productividad.
+                Un resumen claro de pedidos, ventas y productividad.
               </p>
             </div>
 
