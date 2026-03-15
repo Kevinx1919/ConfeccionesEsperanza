@@ -1,46 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  Pencil,
+  RefreshCw,
+  Search,
+  Trash2,
+} from 'lucide-react';
 import { apiUrl } from '../../config/api';
 import { readCollection } from '../../utils/apiResponse';
 
-const Listarcliente = () => {
+const API_URL_CLIENTE = apiUrl('/api/Customer');
+
+const buttonBaseClass =
+  'inline-flex items-center justify-center gap-2 rounded-2xl text-sm font-semibold transition focus:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-60';
+
+function Listarcliente() {
   const navigate = useNavigate();
   const [clientes, setClientes] = useState([]);
-  const [filteredClientes, setFilteredClientes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [clientesDePagina, setClientesDePagina] = useState([]); 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
- 
-  const clientesPorPagina = 5;
+  const [error, setError] = useState('');
 
-  // Función para obtener clientes de la API
+  const clientesPorPagina = 4;
+
   const fetchClientes = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token'); // Ajusta según tu implementación
-      
-      const response = await fetch(apiUrl('/api/Customer'), {
-        method: 'GET',
+      setError('');
+      const token = localStorage.getItem('token');
+
+      const response = await fetch(API_URL_CLIENTE, {
         headers: {
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
       });
 
       if (!response.ok) {
-        throw new Error('Error al obtener los clientes');
+        throw new Error('No se pudieron cargar los clientes');
       }
 
       const data = await response.json();
-      // Basado en tu JSON, los clientes están en data.clientes
-      const clientesRecibidos = readCollection(data, ['clientes']);
+      const clientesRecibidos = readCollection(data, ['clientes', 'items', 'data']);
       setClientes(clientesRecibidos);
-      setFilteredClientes(clientesRecibidos);
-    } catch (err) {
-      setError(err.message);
-      console.error('Error fetching clientes:', err);
+    } catch (fetchError) {
+      setError(fetchError.message || 'No se pudieron cargar los clientes');
     } finally {
       setLoading(false);
     }
@@ -50,247 +58,319 @@ const Listarcliente = () => {
     fetchClientes();
   }, []);
 
-  // Función para filtrar clientes
-  useEffect(() => {
-    if (searchTerm === '') {
-      setFilteredClientes(clientes);
-    } else {
-      const filtered = clientes.filter(cliente =>
-        cliente.nombreCliente.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        cliente.apellidoCliente.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        cliente.emailCliente.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        cliente.numeroDocCliente.toString().includes(searchTerm) ||
-        cliente.telefonoCliente.includes(searchTerm)
-      );
-      setFilteredClientes(filtered);
+  const filteredClientes = useMemo(() => {
+    if (!searchTerm.trim()) {
+      return clientes;
     }
-    setCurrentPage(1); // Resetear a la primera página al buscar
-  }, [searchTerm, clientes]);
 
-  // Cálculos para la paginación
+    const normalizedTerm = searchTerm.toLowerCase();
+    return clientes.filter((cliente) => {
+      const nombre = cliente.nombreCliente?.toLowerCase() || '';
+      const apellido = cliente.apellidoCliente?.toLowerCase() || '';
+      const correo = cliente.emailCliente?.toLowerCase() || '';
+      const telefono = cliente.telefonoCliente?.toLowerCase() || '';
+      const documento = cliente.numeroDocCliente?.toString() || '';
+
+      return (
+        nombre.includes(normalizedTerm) ||
+        apellido.includes(normalizedTerm) ||
+        correo.includes(normalizedTerm) ||
+        telefono.includes(normalizedTerm) ||
+        documento.includes(normalizedTerm)
+      );
+    });
+  }, [clientes, searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  const totalPaginas = Math.max(1, Math.ceil(filteredClientes.length / clientesPorPagina));
   const indexOfLastCliente = currentPage * clientesPorPagina;
   const indexOfFirstCliente = indexOfLastCliente - clientesPorPagina;
   const clientesActuales = filteredClientes.slice(indexOfFirstCliente, indexOfLastCliente);
-  const totalPaginas = Math.ceil(filteredClientes.length / clientesPorPagina);
-  
-
-  // Funciones de navegación de páginas
-  const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const goToPreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
-
-  const goToNextPage = () => {
-    console.log('Intento ir a la siguiente página');
-    setCurrentPage(prev => Math.min(prev + 1, totalPaginas));
-  };
-
-  const handleVolver = () => {
-    navigate('/menu-cliente'); // Ajusta la ruta según tu configuración
-  };
 
   if (loading) {
     return (
-      <div className="consulta-container">
-        <h2>Cargando clientes...</h2>
+      <div className="mx-auto w-full max-w-[74rem] px-4 py-4 sm:px-6">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-8 text-center shadow-[0_24px_60px_-35px_rgba(15,23,42,0.35)]">
+          <p className="text-base font-medium text-slate-600">Cargando clientes...</p>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="consulta-container">
-        <h2>Error: {error}</h2>
-        <button onClick={fetchClientes} className="btn blue">
-          Reintentar
-        </button>
+      <div className="mx-auto w-full max-w-[74rem] px-4 py-4 sm:px-6">
+        <div className="rounded-[28px] border border-rose-200 bg-white p-8 text-center shadow-[0_24px_60px_-35px_rgba(15,23,42,0.35)]">
+          <h2 className="text-2xl font-bold text-slate-900">Error</h2>
+          <p className="mt-3 text-sm text-rose-700">{error}</p>
+          <button
+            id="boton_reintentar_listado_cliente"
+            className={`${buttonBaseClass} mt-6 bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-5 py-3 text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200 boton_reintentar_listado_cliente`}
+            onClick={fetchClientes}
+          >
+            <RefreshCw className="h-4 w-4" />
+            Reintentar
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="consulta-container">
-      <div className="acciones-header">
-        <h2>Lista de Clientes</h2>
-        <input
-          type="text"
-          placeholder="Buscar cliente..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-
-      {clientesActuales.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <h3>No se encontraron clientes</h3>
-          <p>{searchTerm ? 'Intenta con otros términos de búsqueda' : 'No hay clientes registrados'}</p>
-        </div>
-      ) : (
-        <>
-          <table className="tabla-clientes">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nombre Completo</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Documento</th>
-                <th>Dirección</th>
-                <th>Código Postal</th>
-                <th>Total Pedidos</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clientesActuales.map((cliente) => (
-                <tr key={cliente.idCliente}>
-                  <td>{cliente.idCliente}</td>
-                  <td>{`${cliente.nombreCliente} ${cliente.apellidoCliente}`}</td>
-                  <td>{cliente.emailCliente}</td>
-                  <td>{cliente.telefonoCliente}</td>
-                  <td>{cliente.numeroDocCliente}</td>
-                  <td>{cliente.direccionCliente}</td>
-                  <td>{cliente.codigoPostalCliente}</td>
-                  <td>{cliente.totalPedidos}</td>
-                  <td>
-                    <button onClick={() => navigate(`/editarCliente/${cliente.idCliente}`)}>✏️</button>
-                    <button onClick={() => navigate(`/eliminarCliente/${cliente.idCliente}`)}>🗑️ </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Controles de paginación */}
-          <div className="paginacion-controles">
-            <div className="paginacion-grupo">
-              <button
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-                style={{
-                  backgroundColor: '#8b5fbf',
-                  color: 'white',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  opacity: currentPage === 1 ? '0.6' : '1',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                ← Anterior
-              </button>
-              
-              <span style={{ 
-                margin: '0 20px', 
-                fontWeight: 'bold',
-                fontSize: '14px',
-                color: '#333'
-              }}>
-                Página {currentPage} de {totalPaginas}
+    <div className="mx-auto w-full max-w-[150rem] px-4 py-2 sm:px-6 lg:px-8">
+      <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
+        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_50%,#eef2ff_100%)] px-5 py-3 sm:px-8">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
+                Gestion comercial
               </span>
-              
-              <button
-                onClick={goToNextPage}
-                
-                disabled={currentPage === totalPaginas}
-                style={{
-                  backgroundColor: '#7c3aed',
-                  color: 'white',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  cursor: currentPage === totalPaginas ? 'not-allowed' : 'pointer',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  opacity: currentPage === totalPaginas ? '0.6' : '1',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                Siguiente →
-              </button>
+              <h2 className="mt-2 text-[1.6rem] font-bold tracking-tight text-slate-900 sm:text-[2rem]">
+                Lista de Clientes
+              </h2>
+              <p className="mt-1 text-[13px] leading-5 text-slate-600">
+                Revisa la informacion principal de cada cliente y accede a sus acciones.
+              </p>
             </div>
 
-            <div className="paginacion-grupo">
-              <span style={{ 
-                marginRight: '15px',
-                fontSize: '14px',
-                color: '#555'
-              }}>
-                Mostrando {indexOfFirstCliente + 1} a{' '}
-                {Math.min(indexOfLastCliente, filteredClientes.length)} de{' '}
-                {filteredClientes.length} clientes
-              </span>
-              
-              {totalPaginas > 1 && (
-                <select
-                  value={currentPage}
-                  onChange={(e) => goToPage(Number(e.target.value))}
-                  style={{
-                    padding: '8px 12px',
-                    borderRadius: '6px',
-                    border: '1px solid #ddd',
-                    fontSize: '14px',
-                    backgroundColor: '#f8f9fa',
-                    color: '#333',
-                    cursor: 'pointer'
-                  }}
-                >
-                  {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(pageNum => (
-                    <option key={pageNum} value={pageNum}>
-                      Página {pageNum}
-                    </option>
-                  ))}
-                </select>
-              )}
+            <div className="w-full max-w-5xl">
+              <label
+                className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+                htmlFor="campo_busqueda_cliente"
+              >
+                <span className="rounded-lg bg-sky-100 p-1 text-sky-700">
+                  <Search className="h-4 w-4" />
+                </span>
+                Buscar cliente
+              </label>
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  id="campo_busqueda_cliente"
+                  className="w-full rounded-2xl border border-slate-200 bg-white py-2.5 pl-11 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                  type="text"
+                  placeholder="Nombre, apellido, correo, telefono o documento"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                />
+              </div>
             </div>
           </div>
-        </>
-      )}
+        </div>
 
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'flex-end', 
-        marginTop: '30px',
-        paddingRight: '20px'
-      }}>
-        <button 
-          onClick={() => navigate('/clientes')}
-          style={{
-            backgroundColor: '#7c3aed',
-            color: 'white',
-            border: 'none',
-            padding: '12px 30px',
-            borderRadius: '8px',
-            fontSize: '16px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            boxShadow: '0 4px 12px rgba(124, 58, 237, 0.3)',
-            transition: 'all 0.3s ease',
-            minWidth: '120px'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.boxShadow = '0 6px 20px rgba(124, 58, 237, 0.5)';
-            e.target.style.transform = 'translateY(-2px)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.boxShadow = '0 4px 12px rgba(124, 58, 237, 0.3)';
-            e.target.style.transform = 'translateY(0px)';
-          }}
-        >
-          Volver
-        </button>
-      </div>
+        <div className="px-5 py-3 sm:px-8 sm:py-4">
+          {clientesActuales.length === 0 ? (
+            <div className="rounded-[24px] border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
+              <h3 className="text-xl font-semibold text-slate-900">No se encontraron clientes</h3>
+              <p className="mt-3 text-sm text-slate-600">
+                {searchTerm
+                  ? 'Prueba con otro criterio de busqueda.'
+                  : 'Todavia no hay clientes registrados.'}
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="hidden overflow-hidden rounded-[24px] border border-slate-200 lg:block">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border-collapse">
+                    <thead className="bg-slate-100">
+                      <tr className="text-left text-[12px] font-semibold text-slate-700">
+                        <th className="px-4 py-2">Cliente</th>
+                        <th className="px-4 py-2">Correo</th>
+                        <th className="px-4 py-2">Telefono</th>
+                        <th className="px-4 py-2">Documento</th>
+                        <th className="px-4 py-2">Direccion</th>
+                        <th className="px-4 py-2">Codigo postal</th>
+                        <th className="px-4 py-2">Pedidos</th>
+                        <th className="px-4 py-2">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 bg-white text-[12px] text-slate-700">
+                      {clientesActuales.map((cliente, index) => (
+                        <tr
+                          key={cliente.idCliente}
+                          className={index % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}
+                        >
+                          <td className="px-4 py-2.5">
+                            <div className="min-w-[14rem]">
+                              <p className="font-semibold text-slate-900">
+                                {cliente.nombreCliente} {cliente.apellidoCliente}
+                              </p>
+                              <p className="mt-1 text-[11px] text-slate-500">
+                                ID {cliente.idCliente}
+                              </p>
+                            </div>
+                          </td>
+                          <td className="px-4 py-2.5">{cliente.emailCliente}</td>
+                          <td className="px-4 py-2.5">{cliente.telefonoCliente || 'No registrado'}</td>
+                          <td className="px-4 py-2.5">{cliente.numeroDocCliente}</td>
+                          <td className="px-4 py-2.5">{cliente.direccionCliente || 'No registrada'}</td>
+                          <td className="px-4 py-2.5">{cliente.codigoPostalCliente || 'No asignado'}</td>
+                          <td className="px-4 py-2.5">
+                            <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
+                              {cliente.totalPedidos ?? 0}
+                            </span>
+                          </td>
+                          <td className="px-4 py-2.5">
+                            <div className="flex items-center gap-2">
+                              <button
+                                id={`boton_editar_listado_cliente_tabla_${cliente.idCliente}`}
+                                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-sky-200 bg-sky-50 text-sky-700 transition hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100 boton_editar_listado_cliente_tabla"
+                                onClick={() => navigate(`/editarCliente/${cliente.idCliente}`)}
+                                title="Editar cliente"
+                              >
+                                <Pencil className="h-4 w-4" />
+                              </button>
+                              <button
+                                id={`boton_eliminar_listado_cliente_tabla_${cliente.idCliente}`}
+                                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 text-rose-700 transition hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100 boton_eliminar_listado_cliente_tabla"
+                                onClick={() => navigate(`/eliminarCliente/${cliente.idCliente}`)}
+                                title="Eliminar cliente"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 lg:hidden">
+                {clientesActuales.map((cliente) => (
+                  <article
+                    key={cliente.idCliente}
+                    className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
+                          Cliente
+                        </p>
+                        <h3 className="mt-2 text-lg font-bold text-slate-900">
+                          {cliente.nombreCliente} {cliente.apellidoCliente}
+                        </h3>
+                        <p className="mt-1 text-sm text-slate-500">{cliente.emailCliente}</p>
+                      </div>
+                      <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
+                        {cliente.totalPedidos ?? 0} pedidos
+                      </span>
+                    </div>
+
+                    <dl className="mt-4 grid grid-cols-1 gap-3 text-sm text-slate-600 sm:grid-cols-2">
+                      <div>
+                        <dt className="font-semibold text-slate-900">Telefono</dt>
+                        <dd className="mt-1">{cliente.telefonoCliente || 'No registrado'}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold text-slate-900">Documento</dt>
+                        <dd className="mt-1">{cliente.numeroDocCliente}</dd>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <dt className="font-semibold text-slate-900">Direccion</dt>
+                        <dd className="mt-1">{cliente.direccionCliente || 'No registrada'}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold text-slate-900">Codigo postal</dt>
+                        <dd className="mt-1">{cliente.codigoPostalCliente || 'No asignado'}</dd>
+                      </div>
+                    </dl>
+
+                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                      <button
+                        id={`boton_editar_listado_cliente_tarjeta_${cliente.idCliente}`}
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm font-semibold text-sky-700 transition hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100 boton_editar_listado_cliente_tarjeta"
+                        onClick={() => navigate(`/editarCliente/${cliente.idCliente}`)}
+                      >
+                        <Pencil className="h-4 w-4" />
+                        Editar
+                      </button>
+                      <button
+                        id={`boton_eliminar_listado_cliente_tarjeta_${cliente.idCliente}`}
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100 boton_eliminar_listado_cliente_tarjeta"
+                        onClick={() => navigate(`/eliminarCliente/${cliente.idCliente}`)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                        Eliminar
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="mt-3 rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-2">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <button
+                      id="boton_paginacion_anterior_cliente"
+                      className={`${buttonBaseClass} bg-white px-4 py-3 text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-100 focus:ring-slate-200 boton_paginacion_anterior_cliente`}
+                      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                      disabled={currentPage === 1}
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                      Anterior
+                    </button>
+
+                    <span className="text-center text-sm font-semibold text-slate-700 sm:text-left">
+                      Pagina {currentPage} de {totalPaginas}
+                    </span>
+
+                    <button
+                      id="boton_paginacion_siguiente_cliente"
+                      className={`${buttonBaseClass} bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-4 py-3 text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200 boton_paginacion_siguiente_cliente`}
+                      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPaginas))}
+                      disabled={currentPage === totalPaginas}
+                    >
+                      Siguiente
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
+
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <span className="text-sm text-slate-600">
+                      Mostrando {filteredClientes.length === 0 ? 0 : indexOfFirstCliente + 1} a{' '}
+                      {Math.min(indexOfLastCliente, filteredClientes.length)} de {filteredClientes.length} clientes
+                    </span>
+
+                    {totalPaginas > 1 ? (
+                      <select
+                        id="selector_pagina_cliente"
+                        className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                        value={currentPage}
+                        onChange={(event) => setCurrentPage(Number(event.target.value))}
+                      >
+                        {Array.from({ length: totalPaginas }, (_, index) => index + 1).map((pageNumber) => (
+                          <option key={pageNumber} value={pageNumber}>
+                            Pagina {pageNumber}
+                          </option>
+                        ))}
+                      </select>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          <div className="mt-4 flex justify-center md:justify-end">
+            <button
+              id="boton_volver_menu_cliente_desde_listado"
+              className={`${buttonBaseClass} bg-slate-900 px-5 py-3 text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800 focus:ring-slate-300 boton_volver_menu_cliente_desde_listado`}
+              onClick={() => navigate('/clientes')}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Volver al Menu Clientes
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
+}
 
 export default Listarcliente;
-
-
-
