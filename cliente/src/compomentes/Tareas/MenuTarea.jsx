@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, BarChart3, ClipboardList, HardHat, Plus } from 'lucide-react';
+import { ArrowLeft, ClipboardList, HardHat, Plus } from 'lucide-react';
 
 function MenuTarea() {
   const navigate = useNavigate();
@@ -72,21 +72,6 @@ function MenuTarea() {
               </span>
             </button>
 
-            <button
-              id="boton_reporte_tarea_menu_tarea"
-              className="group flex min-h-28 items-center justify-between rounded-2xl border border-violet-200 bg-[linear-gradient(135deg,#8b5cf6_0%,#7c3aed_55%,#4f46e5_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(124,58,237,0.8)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(99,102,241,0.95)] focus:outline-none focus:ring-4 focus:ring-violet-200 boton_reporte_tarea_menu_tarea"
-              type="button"
-            >
-              <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-100/90">
-                  Analisis
-                </p>
-                <p className="mt-2 text-xl font-semibold sm:text-2xl">Generar reporte</p>
-              </div>
-              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
-                <BarChart3 className="h-7 w-7" strokeWidth={2.2} />
-              </span>
-            </button>
           </div>
 
           <div className="mt-8 flex justify-center md:justify-end">

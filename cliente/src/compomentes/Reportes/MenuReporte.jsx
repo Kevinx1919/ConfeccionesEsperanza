@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  BarChart3,
   Boxes,
   ClipboardList,
   Download,
   FileSpreadsheet,
   FileText,
+  LineChart,
   PackageCheck,
+  RefreshCw,
   ShieldUser,
   Users,
   Wrench,
 } from 'lucide-react';
+import '../DashBoard/chart-setup';
+import { Bar, Doughnut } from 'react-chartjs-2';
+import { analizarReporte } from './analisis/analizarReporte';
+import { generarReporte } from './exportadores/generarReporte';
+import { obtenerDatosReporte } from './exportadores/obtenerDatosReporte';
 
 const reportes = [
   {
@@ -63,9 +71,46 @@ const reportes = [
 const MenuReporte = () => {
   const navigate = useNavigate();
   const [seleccion, setSeleccion] = useState('');
+  const [accionActiva, setAccionActiva] = useState('');
+  const [reporteActivo, setReporteActivo] = useState('stock');
+  const [analisisActivo, setAnalisisActivo] = useState(null);
+  const [cargandoAnalisis, setCargandoAnalisis] = useState(true);
+  const [errorAnalisis, setErrorAnalisis] = useState('');
 
-  const handleSeleccion = (modulo, formato) => {
-    setSeleccion(`Seleccionaste ${formato.toUpperCase()} para ${modulo}.`);
+  const cargarAnalisis = async (moduloId) => {
+    try {
+      setCargandoAnalisis(true);
+      setErrorAnalisis('');
+      const reporte = await obtenerDatosReporte(moduloId);
+      setAnalisisActivo({
+        nombre: reporte.nombre,
+        ...analizarReporte(moduloId, reporte.items),
+      });
+    } catch (error) {
+      setErrorAnalisis(error.message || 'No se pudo cargar el analisis del modulo.');
+      setAnalisisActivo(null);
+    } finally {
+      setCargandoAnalisis(false);
+    }
+  };
+
+  React.useEffect(() => {
+    cargarAnalisis(reporteActivo);
+  }, [reporteActivo]);
+
+  const handleSeleccion = async (moduloId, moduloNombre, formato) => {
+    const accionId = `${moduloId}-${formato}`;
+
+    try {
+      setAccionActiva(accionId);
+      setSeleccion('');
+      await generarReporte(moduloId, formato);
+      setSeleccion(`Se descargo ${formato.toUpperCase()} para ${moduloNombre}.`);
+    } catch (error) {
+      setSeleccion(error.message || 'No se pudo generar el reporte seleccionado.');
+    } finally {
+      setAccionActiva('');
+    }
   };
 
   return (
@@ -124,6 +169,246 @@ const MenuReporte = () => {
           </div>
 
           <div className="px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
+            <section className="mb-7 overflow-hidden rounded-[1.9rem] border border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_52%,#faf5ff_100%)] shadow-[0_18px_44px_-30px_rgba(15,23,42,0.35)]">
+              <div className="border-b border-slate-200/80 px-5 py-4 sm:px-6">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                  <div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-sky-700">
+                      Vista analitica
+                    </p>
+                    <h2 className="mt-1 text-2xl font-black tracking-tight text-slate-950">
+                      {reportes.find((reporte) => reporte.id === reporteActivo)?.nombre || 'Analisis'}
+                    </h2>
+                    <p className="mt-1 text-sm text-slate-600">
+                      Consulta una lectura rapida antes de descargar el reporte.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {reportes.map((reporte) => (
+                      <button
+                        key={`selector-${reporte.id}`}
+                        id={`boton_selector_analisis_${reporte.id}_reporte`}
+                        type="button"
+                        onClick={() => setReporteActivo(reporte.id)}
+                        className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                          reporteActivo === reporte.id
+                            ? 'bg-slate-950 text-white shadow-[0_10px_24px_rgba(15,23,42,0.18)]'
+                            : 'bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50'
+                        }`}
+                      >
+                        {reporte.id.charAt(0).toUpperCase() + reporte.id.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-5 py-5 sm:px-6">
+                {cargandoAnalisis ? (
+                  <div className="flex min-h-[18rem] items-center justify-center rounded-[1.5rem] border border-dashed border-slate-300 bg-white/60 text-slate-600">
+                    <div className="flex items-center gap-3 text-sm font-medium">
+                      <RefreshCw className="h-4 w-4 animate-spin" />
+                      Cargando analisis...
+                    </div>
+                  </div>
+                ) : errorAnalisis ? (
+                  <div className="rounded-[1.5rem] border border-rose-200 bg-rose-50/80 p-5">
+                    <p className="text-sm font-medium text-rose-700">{errorAnalisis}</p>
+                  </div>
+                ) : analisisActivo ? (
+                  <div className="grid gap-5 xl:grid-cols-[1.2fr_0.95fr]">
+                    <div className="space-y-5">
+                      <div className="rounded-[1.45rem] border border-slate-200 bg-white/85 p-5 shadow-sm">
+                        <div className="flex items-center gap-3">
+                          <span className="rounded-xl bg-sky-100 p-2 text-sky-700">
+                            <LineChart className="h-5 w-5" />
+                          </span>
+                          <div>
+                            <p className="text-sm font-semibold text-slate-950">Resumen automatico</p>
+                            <p className="text-xs text-slate-500">Lectura general del comportamiento del modulo.</p>
+                          </div>
+                        </div>
+                        <p className="mt-4 text-sm leading-7 text-slate-700">{analisisActivo.resumen}</p>
+                      </div>
+
+                      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                        {analisisActivo.metricas.map((metrica) => (
+                          <article
+                            key={metrica.label}
+                            className="rounded-[1.35rem] border border-slate-200 bg-white/85 p-4 shadow-sm"
+                          >
+                            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
+                              {metrica.label}
+                            </p>
+                            <p className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+                              {metrica.value}
+                            </p>
+                          </article>
+                        ))}
+                      </div>
+
+                      {analisisActivo.secondaryChart ? (
+                        <div className="rounded-[1.45rem] border border-slate-200 bg-white/85 p-4 shadow-sm">
+                          <div className="mb-3 flex items-center gap-2">
+                            <span className="rounded-xl bg-violet-100 p-2 text-violet-700">
+                              <BarChart3 className="h-4.5 w-4.5" />
+                            </span>
+                            <p className="text-sm font-semibold text-slate-900">
+                              {analisisActivo.secondaryChart.title}
+                            </p>
+                          </div>
+                          <div className="h-[17rem]">
+                          <Bar
+                            data={analisisActivo.secondaryChart.data}
+                            options={{
+                              maintainAspectRatio: false,
+                              plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                  callbacks: {
+                                    label: (context) =>
+                                      new Intl.NumberFormat('es-CO', {
+                                        style: 'currency',
+                                        currency: 'COP',
+                                        maximumFractionDigits: 0,
+                                      }).format(context.parsed.y || 0),
+                                  },
+                                },
+                              },
+                              scales: {
+                                x: {
+                                  title: {
+                                    display: true,
+                                    text:
+                                      reporteActivo === 'pedidos'
+                                        ? 'Pedidos'
+                                        : 'Categorias analizadas',
+                                    color: '#334155',
+                                    font: { size: 12, weight: '600' },
+                                  },
+                                  grid: { display: false },
+                                  ticks: { color: '#475569', font: { size: 11 } },
+                                },
+                                y: {
+                                  title: {
+                                    display: true,
+                                    text:
+                                      reporteActivo === 'pedidos'
+                                        ? 'Total del pedido (COP)'
+                                        : 'Cantidad',
+                                    color: '#334155',
+                                    font: { size: 12, weight: '600' },
+                                  },
+                                  ticks: {
+                                    color: '#475569',
+                                    font: { size: 11 },
+                                    callback: (value) =>
+                                      reporteActivo === 'pedidos'
+                                        ? new Intl.NumberFormat('es-CO').format(value)
+                                        : value,
+                                  },
+                                },
+                              },
+                            }}
+                          />
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className="rounded-[1.45rem] border border-slate-200 bg-white/85 p-4 shadow-sm">
+                      <div className="mb-3 flex items-center gap-2">
+                        <span className="rounded-xl bg-fuchsia-100 p-2 text-fuchsia-700">
+                          <BarChart3 className="h-4.5 w-4.5" />
+                        </span>
+                        <p className="text-sm font-semibold text-slate-900">
+                          {analisisActivo.primaryChart?.title || 'Distribucion general'}
+                        </p>
+                      </div>
+                      <div className="h-[22rem]">
+                        {analisisActivo.primaryChart?.type === 'doughnut' ? (
+                          <Doughnut
+                            data={analisisActivo.primaryChart.data}
+                            options={{
+                              maintainAspectRatio: false,
+                              plugins: {
+                                legend: {
+                                  position: 'bottom',
+                                  labels: {
+                                    boxWidth: 12,
+                                    color: '#334155',
+                                    font: { size: 11 },
+                                  },
+                                },
+                              },
+                              cutout: '62%',
+                            }}
+                          />
+                        ) : (
+                          <Bar
+                            data={analisisActivo.primaryChart?.data}
+                            options={{
+                              maintainAspectRatio: false,
+                              plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                  callbacks: {
+                                    label: (context) =>
+                                      reporteActivo === 'pedidos'
+                                        ? new Intl.NumberFormat('es-CO', {
+                                            style: 'currency',
+                                            currency: 'COP',
+                                            maximumFractionDigits: 0,
+                                          }).format(context.parsed.y || 0)
+                                        : `${context.parsed.y || 0}`,
+                                  },
+                                },
+                              },
+                              scales: {
+                                x: {
+                                  title: {
+                                    display: true,
+                                    text:
+                                      reporteActivo === 'pedidos'
+                                        ? 'Pedidos'
+                                        : 'Categorias analizadas',
+                                    color: '#334155',
+                                    font: { size: 12, weight: '600' },
+                                  },
+                                  grid: { display: false },
+                                  ticks: { color: '#475569', font: { size: 11 } },
+                                },
+                                y: {
+                                  title: {
+                                    display: true,
+                                    text:
+                                      reporteActivo === 'pedidos'
+                                        ? 'Total del pedido (COP)'
+                                        : 'Cantidad',
+                                    color: '#334155',
+                                    font: { size: 12, weight: '600' },
+                                  },
+                                  ticks: {
+                                    color: '#475569',
+                                    font: { size: 11 },
+                                    callback: (value) =>
+                                      reporteActivo === 'pedidos'
+                                        ? new Intl.NumberFormat('es-CO').format(value)
+                                        : value,
+                                  },
+                                },
+                              },
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </section>
+
             <div className="grid gap-5 xl:grid-cols-2">
               {reportes.map((reporte) => {
                 const Icono = reporte.icono;
@@ -151,6 +436,15 @@ const MenuReporte = () => {
                           <p className="mt-2 text-sm leading-6 text-slate-700">
                             {reporte.descripcion}
                           </p>
+                          <button
+                            id={`boton_ver_analisis_${reporte.id}_reporte`}
+                            type="button"
+                            onClick={() => setReporteActivo(reporte.id)}
+                            className="mt-3 inline-flex items-center gap-2 rounded-full bg-slate-950 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-slate-800"
+                          >
+                            <BarChart3 className="h-3.5 w-3.5" />
+                            Ver analisis
+                          </button>
                         </div>
                       </div>
 
@@ -158,14 +452,17 @@ const MenuReporte = () => {
                         <button
                           id={`boton_descargar_pdf_${reporte.id}_reporte`}
                           type="button"
-                          onClick={() => handleSeleccion(reporte.nombre, 'pdf')}
+                          onClick={() => handleSeleccion(reporte.id, reporte.nombre, 'pdf')}
+                          disabled={accionActiva === `${reporte.id}-pdf` || accionActiva === `${reporte.id}-excel`}
                           className="group flex min-h-[5.2rem] items-center justify-between rounded-[1.35rem] border border-red-200/80 bg-white/85 px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-red-300 hover:shadow-[0_14px_28px_rgba(239,68,68,0.12)]"
                         >
                           <div>
                             <p className="text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-red-500">
                               Documento
                             </p>
-                            <p className="mt-2 text-lg font-bold text-slate-950">Descargar PDF</p>
+                            <p className="mt-2 text-lg font-bold text-slate-950">
+                              {accionActiva === `${reporte.id}-pdf` ? 'Generando PDF...' : 'Descargar PDF'}
+                            </p>
                           </div>
                           <div className="rounded-2xl bg-red-50 p-3 text-red-500 transition group-hover:bg-red-100">
                             <FileText className="h-6 w-6" strokeWidth={2.1} />
@@ -175,14 +472,19 @@ const MenuReporte = () => {
                         <button
                           id={`boton_descargar_excel_${reporte.id}_reporte`}
                           type="button"
-                          onClick={() => handleSeleccion(reporte.nombre, 'excel')}
+                          onClick={() => handleSeleccion(reporte.id, reporte.nombre, 'excel')}
+                          disabled={accionActiva === `${reporte.id}-excel` || accionActiva === `${reporte.id}-pdf`}
                           className="group flex min-h-[5.2rem] items-center justify-between rounded-[1.35rem] border border-emerald-200/80 bg-white/85 px-4 py-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-[0_14px_28px_rgba(16,185,129,0.12)]"
                         >
                           <div>
                             <p className="text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-emerald-600">
                               Hoja de calculo
                             </p>
-                            <p className="mt-2 text-lg font-bold text-slate-950">Descargar Excel</p>
+                            <p className="mt-2 text-lg font-bold text-slate-950">
+                              {accionActiva === `${reporte.id}-excel`
+                                ? 'Generando Excel...'
+                                : 'Descargar Excel'}
+                            </p>
                           </div>
                           <div className="rounded-2xl bg-emerald-50 p-3 text-emerald-600 transition group-hover:bg-emerald-100">
                             <FileSpreadsheet className="h-6 w-6" strokeWidth={2.1} />
