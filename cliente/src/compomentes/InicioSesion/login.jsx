@@ -84,6 +84,8 @@ function Login() {
         throw new Error(data.message || 'No fue posible iniciar sesión.');
       }
 
+      window.history.replaceState(null, '', '/');
+
       login({
         token: data.token,
         user: data.user,
