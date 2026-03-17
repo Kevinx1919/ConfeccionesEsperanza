@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   BarChart3,
@@ -76,6 +76,18 @@ const MenuReporte = () => {
   const [analisisActivo, setAnalisisActivo] = useState(null);
   const [cargandoAnalisis, setCargandoAnalisis] = useState(true);
   const [errorAnalisis, setErrorAnalisis] = useState('');
+  const analisisRef = useRef(null);
+
+  const irAAnalisis = () => {
+    if (!analisisRef.current) return;
+
+    requestAnimationFrame(() => {
+      analisisRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  };
 
   const cargarAnalisis = async (moduloId) => {
     try {
@@ -169,7 +181,10 @@ const MenuReporte = () => {
           </div>
 
           <div className="px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
-            <section className="mb-7 overflow-hidden rounded-[1.9rem] border border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_52%,#faf5ff_100%)] shadow-[0_18px_44px_-30px_rgba(15,23,42,0.35)]">
+            <section
+              ref={analisisRef}
+              className="mb-7 overflow-hidden rounded-[1.9rem] border border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_52%,#faf5ff_100%)] shadow-[0_18px_44px_-30px_rgba(15,23,42,0.35)]"
+            >
               <div className="border-b border-slate-200/80 px-5 py-4 sm:px-6">
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div>
@@ -439,7 +454,10 @@ const MenuReporte = () => {
                           <button
                             id={`boton_ver_analisis_${reporte.id}_reporte`}
                             type="button"
-                            onClick={() => setReporteActivo(reporte.id)}
+                            onClick={() => {
+                              setReporteActivo(reporte.id);
+                              irAAnalisis();
+                            }}
                             className="mt-3 inline-flex items-center gap-2 rounded-full bg-slate-950 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-slate-800"
                           >
                             <BarChart3 className="h-3.5 w-3.5" />
