@@ -44,6 +44,7 @@ import AsignacionTarea from "./compomentes/Tareas/AsignacionTarea";
 import MenuReporte from "./compomentes/Reportes/MenuReporte";
 //importaciones para el perfil de usuario 
 import Perfil from "./compomentes/Perfil/Perfil";
+import MenuConfiguracion from "./compomentes/Configuracion/MenuConfiguracion";
 
 const LoadingScreen = () => (
   <div style={{
@@ -120,6 +121,7 @@ const MainApp = () => {
         <Route path="/reportes" element={<MenuReporte />} />
         {/* Rutas para usuarios */}
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/configuracion" element={<MenuConfiguracion />} />
       </Routes>
     </div>
   );

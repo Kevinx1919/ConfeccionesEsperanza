@@ -23,7 +23,11 @@ body {
   min-width: 320px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #111827;
-  background-color: #f8fafc;
+  background:
+    radial-gradient(circle at top left, rgba(192, 132, 252, 0.2), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.16), transparent 22%),
+    linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #ec4899 100%);
+  background-attachment: fixed;
 }
 
 button,
