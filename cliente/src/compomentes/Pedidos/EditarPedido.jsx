@@ -182,7 +182,7 @@ const EditarPedido = () => {
               Editar Pedido #{pedido.idPedido}
             </h2>
             <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">
-              Actualiza la fecha de entrega y las cantidades del pedido con el mismo lenguaje visual de Stock.
+              Actualiza la fecha de entrega y las cantidades del pedido.
             </p>
           </div>
         </div>

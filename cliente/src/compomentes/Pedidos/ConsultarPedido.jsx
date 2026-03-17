@@ -26,9 +26,9 @@ const buttonBaseClass =
   'inline-flex items-center justify-center gap-2 rounded-2xl text-[13px] font-semibold transition focus:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-60';
 
 const inputClass =
-  'w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100';
+  'w-full rounded-2xl border border-slate-200 bg-white px-3.5 py-2.5 text-[13px] text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100';
 
-const labelClass = 'mb-1 inline-flex items-center gap-2 text-[12px] font-semibold text-slate-700';
+const labelClass = 'mb-1.5 inline-flex items-center gap-2 text-[13px] font-semibold text-slate-700';
 
 const ESTADOS_PEDIDO = {
   1: { label: 'Pendiente', className: 'bg-slate-100 text-slate-700' },
@@ -230,23 +230,23 @@ const ConsultarPedido = () => {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[122rem] px-4 py-3 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[122rem] px-4 py-2 sm:px-6 lg:px-8">
       <section className={panelClass}>
-        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_50%,#eef2ff_100%)] px-5 py-3 sm:px-8">
-          <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(250px,0.7fr)_minmax(0,1.6fr)] xl:items-start">
-            <div className="max-w-xl">
+        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_50%,#eef2ff_100%)] px-5 py-2.5 sm:px-8">
+          <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
+            <div className="max-w-3xl">
               <span className="inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
                 Gestion comercial
               </span>
-              <h2 className="mt-2 text-[2rem] font-bold tracking-tight text-slate-900 sm:text-[2.25rem]">
+              <h2 className="mt-2 text-[1.75rem] font-bold tracking-tight text-slate-900 sm:text-[2rem]">
                 Lista de Pedidos
               </h2>
-              <p className="mt-1 text-[14px] leading-6 text-slate-600">
-                Consulta pedidos, aplica filtros y revisa su avance sin perder estabilidad en ninguna pantalla.
+              <p className="mt-1 text-sm leading-6 text-slate-600 sm:text-[15px]">
+                Consulta pedidos, aplica filtros.
               </p>
             </div>
 
-            <div className="min-w-0 rounded-[24px] border border-slate-200 bg-white/90 p-3 shadow-sm">
+            <div className="rounded-[24px] border border-slate-200 bg-white/90 p-3 shadow-sm">
               <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2 xl:grid-cols-5">
                 <div>
                   <FieldLabel htmlFor="campo_filtro_cliente_pedido" icon={UserRound}>
@@ -333,7 +333,7 @@ const ConsultarPedido = () => {
               <div className="mt-2.5 flex flex-col gap-2.5 sm:flex-row sm:justify-end">
                 <button
                   id="boton_limpiar_filtros_pedido"
-                  className={`${buttonBaseClass} border border-slate-300 bg-white px-4 py-2 text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus:ring-slate-200`}
+                  className={`${buttonBaseClass} border border-slate-300 bg-white px-4 py-2.5 text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus:ring-slate-200`}
                   onClick={limpiarFiltros}
                   type="button"
                 >
@@ -342,7 +342,7 @@ const ConsultarPedido = () => {
                 </button>
                 <button
                   id="boton_aplicar_filtros_pedido"
-                  className={`${buttonBaseClass} bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-4 py-2 text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200`}
+                  className={`${buttonBaseClass} bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-4 py-2.5 text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200`}
                   onClick={aplicarFiltros}
                   type="button"
                 >
@@ -354,7 +354,7 @@ const ConsultarPedido = () => {
           </div>
         </div>
 
-        <div className="px-5 py-3 sm:px-8 sm:py-4">
+        <div className="px-5 py-2.5 sm:px-8 sm:py-3">
           {pedidos.length === 0 ? (
             <div className="rounded-[24px] border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sky-100 text-sky-700">
@@ -372,15 +372,15 @@ const ConsultarPedido = () => {
                   <table className="min-w-full border-collapse">
                     <thead className="bg-slate-100">
                       <tr className="text-left text-[13px] font-semibold text-slate-700">
-                        <th className="px-4 py-3.5">ID</th>
-                        <th className="px-4 py-3.5">Cliente</th>
-                        <th className="px-4 py-3.5">Correo</th>
-                        <th className="px-4 py-3.5">Registro</th>
-                        <th className="px-4 py-3.5">Entrega</th>
-                        <th className="px-4 py-3.5">Estado</th>
-                        <th className="px-4 py-3.5">Total</th>
-                        <th className="px-4 py-3.5">Items</th>
-                        <th className="px-4 py-3.5">Acciones</th>
+                        <th className="px-4 py-3">ID</th>
+                        <th className="px-4 py-3">Cliente</th>
+                        <th className="px-4 py-3">Correo</th>
+                        <th className="px-4 py-3">Registro</th>
+                        <th className="px-4 py-3">Entrega</th>
+                        <th className="px-4 py-3">Estado</th>
+                        <th className="px-4 py-3">Total</th>
+                        <th className="px-4 py-3">Items</th>
+                        <th className="px-4 py-3">Acciones</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-200 bg-white text-[13px] text-slate-700">
@@ -389,12 +389,12 @@ const ConsultarPedido = () => {
                           key={pedido.idPedido}
                           className={index % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}
                         >
-                          <td className="px-4 py-3.5 font-semibold text-slate-900">#{pedido.idPedido}</td>
-                          <td className="px-4 py-3.5">{pedido.clienteNombre}</td>
-                          <td className="px-4 py-3.5">{pedido.clienteEmail}</td>
-                          <td className="px-4 py-3.5">{formatDate(pedido.fechaRegistro)}</td>
-                          <td className="px-4 py-3.5">{formatDate(pedido.fechaEntrega)}</td>
-                          <td className="px-4 py-3.5">
+                          <td className="px-4 py-3 font-semibold text-slate-900">#{pedido.idPedido}</td>
+                          <td className="px-4 py-3">{pedido.clienteNombre}</td>
+                          <td className="px-4 py-3">{pedido.clienteEmail}</td>
+                          <td className="px-4 py-3">{formatDate(pedido.fechaRegistro)}</td>
+                          <td className="px-4 py-3">{formatDate(pedido.fechaEntrega)}</td>
+                          <td className="px-4 py-3">
                             <div className="flex flex-wrap items-center gap-2">
                               {getEstadoBadge(pedido.estado, pedido.estadoDescripcion)}
                               {pedido.estaVencido ? (
@@ -404,11 +404,11 @@ const ConsultarPedido = () => {
                               ) : null}
                             </div>
                           </td>
-                          <td className="px-4 py-3.5 font-medium text-slate-900">
+                          <td className="px-4 py-3 font-medium text-slate-900">
                             {formatCurrency(pedido.totalPedido)}
                           </td>
-                          <td className="px-4 py-3.5">{pedido.totalItems}</td>
-                          <td className="px-4 py-3.5">
+                          <td className="px-4 py-3">{pedido.totalItems}</td>
+                          <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <button
                                 id={`boton_detalle_pedido_tabla_${pedido.idPedido}`}
@@ -500,7 +500,7 @@ const ConsultarPedido = () => {
                 ))}
               </div>
 
-              <div className="mt-3 rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-3.5">
+              <div className="mt-2.5 rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-2.5">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                     <button

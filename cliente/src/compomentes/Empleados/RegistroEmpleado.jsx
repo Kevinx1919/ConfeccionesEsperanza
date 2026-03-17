@@ -151,7 +151,7 @@ function RegistroEmpleado() {
               Registrar Empleado
             </h2>
             <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-              Crea usuarios del sistema con una configuracion clara, consistente y adaptable a cualquier pantalla.
+              Crea usuarios del sistema.
             </p>
           </div>
         </div>

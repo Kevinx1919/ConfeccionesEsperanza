@@ -290,7 +290,7 @@ function RegistrarMaterial() {
               {titulo}
             </h2>
             <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-              Completa la informacion del material con un formulario estable y adaptable a cualquier pantalla.
+              Completa la informacion del material.
             </p>
           </div>
         </div>

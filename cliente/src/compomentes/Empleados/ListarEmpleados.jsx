@@ -27,7 +27,7 @@ function ListarEmpleados() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const empleadosPorPagina = 5;
+  const empleadosPorPagina = 4;
 
   const fetchEmpleados = async () => {
     try {
@@ -146,38 +146,38 @@ function ListarEmpleados() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[112rem] px-4 py-2 sm:px-6 lg:px-8">
-      <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
-        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_50%,#eef2ff_100%)] px-5 py-4 sm:px-8">
-          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+    <div className="mx-auto w-full max-w-[132rem] px-4 py-0 sm:px-6 lg:px-8">
+      <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
+        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#eff6ff_0%,#f8fafc_50%,#eef2ff_100%)] px-5 py-1.5 sm:px-8">
+          <div className="flex flex-col gap-2 xl:flex-row xl:items-end xl:justify-between">
             <div className="max-w-2xl">
               <span className="inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
                 Gestion de personal
               </span>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              <h2 className="mt-1 text-[1.45rem] font-bold tracking-tight text-slate-900 sm:text-[1.8rem]">
                 Lista de Empleados
               </h2>
-              <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-                Consulta usuarios, revisa sus estados y administra el equipo sin romper el responsive.
+              <p className="mt-0.5 text-[12px] leading-[1.15rem] text-slate-600">
+                Consulta usuarios, revisa sus estados y administra el equipo.
               </p>
             </div>
 
-            <div className="grid w-full gap-3 md:grid-cols-2 xl:max-w-4xl xl:grid-cols-4">
+            <div className="grid w-full gap-1 md:grid-cols-2 xl:max-w-[76rem] xl:grid-cols-4">
               <div className="xl:col-span-2">
                 <label
-                  className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+                  className="mb-1.5 inline-flex items-center gap-2 text-[13px] font-semibold text-slate-700"
                   htmlFor="campo_busqueda_empleado"
                 >
                   <span className="rounded-lg bg-sky-100 p-1 text-sky-700">
-                    <Search className="h-4 w-4" />
+                    <Search className="h-3.5 w-3.5" />
                   </span>
                   Buscar empleado
                 </label>
                 <div className="relative">
-                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
                   <input
                     id="campo_busqueda_empleado"
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                    className="w-full rounded-2xl border border-slate-200 bg-white py-1.5 pl-10 pr-4 text-[13px] text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
                     type="text"
                     placeholder="Nombre, correo o telefono"
                     value={searchTerm}
@@ -188,17 +188,17 @@ function ListarEmpleados() {
 
               <div>
                 <label
-                  className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+                  className="mb-1.5 inline-flex items-center gap-2 text-[13px] font-semibold text-slate-700"
                   htmlFor="selector_rol_empleado"
                 >
                   <span className="rounded-lg bg-sky-100 p-1 text-sky-700">
-                    <Users className="h-4 w-4" />
+                    <Users className="h-3.5 w-3.5" />
                   </span>
                   Rol
                 </label>
                 <select
                   id="selector_rol_empleado"
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-1.5 text-[13px] text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
                   value={roleFilter}
                   onChange={(event) => setRoleFilter(event.target.value)}
                 >
@@ -213,17 +213,17 @@ function ListarEmpleados() {
 
               <div>
                 <label
-                  className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-slate-700"
+                  className="mb-1.5 inline-flex items-center gap-2 text-[13px] font-semibold text-slate-700"
                   htmlFor="selector_estado_empleado"
                 >
                   <span className="rounded-lg bg-sky-100 p-1 text-sky-700">
-                    <ShieldCheck className="h-4 w-4" />
+                    <ShieldCheck className="h-3.5 w-3.5" />
                   </span>
                   Estado
                 </label>
                 <select
                   id="selector_estado_empleado"
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-1.5 text-[13px] text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
                   value={statusFilter}
                   onChange={(event) => setStatusFilter(event.target.value)}
                 >
@@ -239,12 +239,12 @@ function ListarEmpleados() {
           </div>
         </div>
 
-        <div className="px-5 py-3 sm:px-8 sm:py-4">
+        <div className="px-5 py-1 sm:px-8 sm:py-1">
           {(searchTerm || roleFilter || statusFilter) && (
-            <div className="mb-3 flex justify-end">
+            <div className="mb-2 flex justify-end">
               <button
                 id="boton_limpiar_filtros_empleado"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200 boton_limpiar_filtros_empleado"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-4 py-2.5 text-[13px] font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200 boton_limpiar_filtros_empleado"
                 onClick={() => {
                   setSearchTerm('');
                   setRoleFilter('');
@@ -252,7 +252,7 @@ function ListarEmpleados() {
                 }}
                 type="button"
               >
-                <RefreshCw className="h-4 w-4" />
+                <RefreshCw className="h-3.5 w-3.5" />
                 Limpiar filtros
               </button>
             </div>
@@ -269,42 +269,42 @@ function ListarEmpleados() {
             </div>
           ) : (
             <>
-              <div className="hidden overflow-hidden rounded-[24px] border border-slate-200 xl:block">
+              <div className="hidden overflow-hidden rounded-[22px] border border-slate-200 xl:block">
                 <div className="overflow-x-auto">
                   <table className="min-w-full border-collapse">
                     <thead className="bg-slate-100">
-                      <tr className="text-left text-sm font-semibold text-slate-700">
-                        <th className="px-4 py-4">Usuario</th>
-                        <th className="px-4 py-4">Correo</th>
-                        <th className="px-4 py-4">Telefono</th>
-                        <th className="px-4 py-4">Roles</th>
-                        <th className="px-4 py-4">Email</th>
-                        <th className="px-4 py-4">2FA</th>
-                        <th className="px-4 py-4">Estado</th>
-                        <th className="px-4 py-4">Intentos</th>
-                        <th className="px-4 py-4">Acciones</th>
+                      <tr className="text-left text-[11px] font-semibold text-slate-700">
+                        <th className="px-4 py-1.5">Usuario</th>
+                        <th className="px-4 py-1.5">Correo</th>
+                        <th className="px-4 py-1.5">Telefono</th>
+                        <th className="px-4 py-1.5">Roles</th>
+                        <th className="px-4 py-1.5">Email</th>
+                        <th className="px-4 py-1.5">2FA</th>
+                        <th className="px-4 py-1.5">Estado</th>
+                        <th className="px-4 py-1.5">Intentos</th>
+                        <th className="px-4 py-1.5">Acciones</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200 bg-white text-sm text-slate-700">
+                    <tbody className="divide-y divide-slate-200 bg-white text-[11px] text-slate-700">
                       {empleadosActuales.map((empleado, index) => (
                         <tr key={empleado.id} className={index % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}>
-                          <td className="px-4 py-4">
-                            <div className="min-w-[12rem]">
+                          <td className="px-4 py-1.5">
+                            <div className="min-w-[11rem]">
                               <p className="font-semibold text-slate-900">{empleado.userName}</p>
-                              <p className="mt-1 text-xs text-slate-500">
+                              <p className="mt-0.5 text-[10px] text-slate-500">
                                 ID {empleado.id?.slice?.(0, 8) || 'N/A'}
                               </p>
                             </div>
                           </td>
-                          <td className="px-4 py-4">{empleado.email}</td>
-                          <td className="px-4 py-4">{empleado.phoneNumber || 'No registrado'}</td>
-                          <td className="px-4 py-4">
-                            <div className="flex flex-wrap gap-2">
+                          <td className="px-4 py-1.5">{empleado.email}</td>
+                          <td className="px-4 py-1.5">{empleado.phoneNumber || 'No registrado'}</td>
+                          <td className="px-4 py-1.5">
+                            <div className="flex flex-wrap gap-1.5">
                               {(empleado.roles || []).length > 0 ? (
                                 (empleado.roles || []).map((role) => (
                                   <span
                                     key={`${empleado.id}-${role}`}
-                                    className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700"
+                                    className="rounded-full bg-sky-50 px-2.5 py-0.5 text-[10px] font-semibold text-sky-700"
                                   >
                                     {role}
                                   </span>
@@ -314,9 +314,9 @@ function ListarEmpleados() {
                               )}
                             </div>
                           </td>
-                          <td className="px-4 py-4">
+                          <td className="px-4 py-1.5">
                             <span
-                              className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                              className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
                                 empleado.emailConfirmed
                                   ? 'bg-emerald-100 text-emerald-700'
                                   : 'bg-rose-100 text-rose-700'
@@ -325,9 +325,9 @@ function ListarEmpleados() {
                               {empleado.emailConfirmed ? 'Confirmado' : 'Pendiente'}
                             </span>
                           </td>
-                          <td className="px-4 py-4">
+                          <td className="px-4 py-1.5">
                             <span
-                              className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                              className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
                                 empleado.twoFactorEnabled
                                   ? 'bg-violet-100 text-violet-700'
                                   : 'bg-slate-100 text-slate-600'
@@ -336,29 +336,29 @@ function ListarEmpleados() {
                               {empleado.twoFactorEnabled ? 'Activo' : 'Inactivo'}
                             </span>
                           </td>
-                          <td className="px-4 py-4">
-                            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${getEstadoBadgeClass(empleado)}`}>
+                          <td className="px-4 py-1.5">
+                            <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${getEstadoBadgeClass(empleado)}`}>
                               {empleado.lockoutEnabled ? 'Bloqueado' : 'Activo'}
                             </span>
                           </td>
-                          <td className="px-4 py-4">{empleado.accessFailedCount || 0}</td>
-                          <td className="px-4 py-4">
+                          <td className="px-4 py-1.5">{empleado.accessFailedCount || 0}</td>
+                          <td className="px-4 py-1.5">
                             <div className="flex items-center gap-2">
                               <button
                                 id={`boton_editar_listado_empleado_tabla_${empleado.id}`}
-                                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-sky-200 bg-sky-50 text-sky-700 transition hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100 boton_editar_listado_empleado_tabla"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-sky-200 bg-sky-50 text-sky-700 transition hover:bg-sky-100 focus:outline-none focus:ring-4 focus:ring-sky-100 boton_editar_listado_empleado_tabla"
                                 onClick={() => navigate(`/editarEmpleado/${empleado.id}`)}
                                 title="Editar empleado"
                               >
-                                <Pencil className="h-4 w-4" />
+                                <Pencil className="h-3.5 w-3.5" />
                               </button>
                               <button
                                 id={`boton_eliminar_listado_empleado_tabla_${empleado.id}`}
-                                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 text-rose-700 transition hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100 boton_eliminar_listado_empleado_tabla"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 text-rose-700 transition hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100 boton_eliminar_listado_empleado_tabla"
                                 onClick={() => navigate(`/eliminarEmpleado/${empleado.id}`)}
                                 title="Eliminar empleado"
                               >
-                                <Trash2 className="h-4 w-4" />
+                                <Trash2 className="h-3.5 w-3.5" />
                               </button>
                             </div>
                           </td>
@@ -446,36 +446,36 @@ function ListarEmpleados() {
                 ))}
               </div>
 
-              <div className="mt-3 rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-3.5">
+              <div className="mt-1 rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-1">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                     <button
                       id="boton_paginacion_anterior_empleado"
-                      className={`${buttonBaseClass} bg-white px-4 py-3 text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-100 focus:ring-slate-200 boton_paginacion_anterior_empleado`}
+                      className={`${buttonBaseClass} bg-white px-4 py-2.5 text-[13px] text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-100 focus:ring-slate-200 boton_paginacion_anterior_empleado`}
                       onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                       disabled={currentPage === 1}
                     >
-                      <ChevronLeft className="h-4 w-4" />
+                      <ChevronLeft className="h-3.5 w-3.5" />
                       Anterior
                     </button>
 
-                    <span className="text-center text-sm font-semibold text-slate-700 sm:text-left">
+                    <span className="text-center text-[13px] font-semibold text-slate-700 sm:text-left">
                       Pagina {currentPage} de {totalPaginas}
                     </span>
 
                     <button
                       id="boton_paginacion_siguiente_empleado"
-                      className={`${buttonBaseClass} bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-4 py-3 text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200 boton_paginacion_siguiente_empleado`}
+                      className={`${buttonBaseClass} bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-4 py-2.5 text-[13px] text-white shadow-lg shadow-sky-500/20 focus:ring-sky-200 boton_paginacion_siguiente_empleado`}
                       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPaginas))}
                       disabled={currentPage === totalPaginas}
                     >
                       Siguiente
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <span className="text-sm text-slate-600">
+                    <span className="text-[13px] text-slate-600">
                       Mostrando {empleadosFiltrados.length === 0 ? 0 : indexOfFirstEmpleado + 1} a{' '}
                       {Math.min(indexOfLastEmpleado, empleadosFiltrados.length)} de{' '}
                       {empleadosFiltrados.length} empleados
@@ -484,7 +484,7 @@ function ListarEmpleados() {
                     {totalPaginas > 1 ? (
                       <select
                         id="selector_pagina_empleado"
-                        className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                        className="rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-[13px] font-medium text-slate-700 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
                         value={currentPage}
                         onChange={(event) => setCurrentPage(Number(event.target.value))}
                       >
@@ -501,13 +501,13 @@ function ListarEmpleados() {
             </>
           )}
 
-          <div className="mt-4 flex justify-center md:justify-end">
+          <div className="mt-3 flex justify-center md:justify-end">
             <button
               id="boton_volver_menu_empleado_desde_listado"
-              className={`${buttonBaseClass} bg-slate-900 px-5 py-3 text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800 focus:ring-slate-300 boton_volver_menu_empleado_desde_listado`}
+              className={`${buttonBaseClass} bg-slate-900 px-5 py-2.5 text-[13px] text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800 focus:ring-slate-300 boton_volver_menu_empleado_desde_listado`}
               onClick={() => navigate('/empleados')}
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-3.5 w-3.5" />
               Volver al Menu Empleados
             </button>
           </div>

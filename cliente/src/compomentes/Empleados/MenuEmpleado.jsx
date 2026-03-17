@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, BadgeDollarSign, ClipboardList, Clock3, Plus } from 'lucide-react';
+import { ArrowLeft, ClipboardList, Plus } from 'lucide-react';
 
 function MenuEmpleado() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function MenuEmpleado() {
               Empleados
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-              Administra usuarios, revisa estados y mantén el modulo estable en cualquier tamaño de pantalla.
+              Administra usuarios y revisa estados.
             </p>
           </div>
         </div>
@@ -56,37 +56,6 @@ function MenuEmpleado() {
               </span>
             </button>
 
-            <button
-              id="boton_informes_pago_menu_empleado"
-              className="group flex min-h-28 items-center justify-between rounded-2xl border border-emerald-200 bg-[linear-gradient(135deg,#10b981_0%,#059669_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(5,150,105,0.75)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(5,150,105,0.9)] focus:outline-none focus:ring-4 focus:ring-emerald-200 boton_informes_pago_menu_empleado"
-              type="button"
-            >
-              <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-50/90">
-                  Finanzas
-                </p>
-                <p className="mt-2 text-xl font-semibold sm:text-2xl">Informes de pagos</p>
-              </div>
-              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
-                <BadgeDollarSign className="h-7 w-7" strokeWidth={2.2} />
-              </span>
-            </button>
-
-            <button
-              id="boton_registro_horas_menu_empleado"
-              className="group flex min-h-28 items-center justify-between rounded-2xl border border-violet-200 bg-[linear-gradient(135deg,#8b5cf6_0%,#7c3aed_55%,#4f46e5_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(124,58,237,0.8)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(99,102,241,0.95)] focus:outline-none focus:ring-4 focus:ring-violet-200 boton_registro_horas_menu_empleado"
-              type="button"
-            >
-              <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-100/90">
-                  Jornadas
-                </p>
-                <p className="mt-2 text-xl font-semibold sm:text-2xl">Registro de horas</p>
-              </div>
-              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
-                <Clock3 className="h-7 w-7" strokeWidth={2.2} />
-              </span>
-            </button>
           </div>
 
           <div className="mt-8 flex justify-center md:justify-end">

@@ -215,31 +215,31 @@ function RegistrarPedido() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[108rem] px-4 py-2 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[120rem] px-4 py-1 sm:px-6 lg:px-8">
       <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
-        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#ecfeff_0%,#eff6ff_55%,#eef2ff_100%)] px-5 py-4 sm:px-8">
+        <div className="border-b border-slate-200 bg-[linear-gradient(135deg,#ecfeff_0%,#eff6ff_55%,#eef2ff_100%)] px-5 py-2.5 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
               Gestion comercial
             </span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-2 text-[1.75rem] font-bold tracking-tight text-slate-900 sm:text-[2.05rem]">
               Registrar Pedido
             </h2>
-            <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-              Completa la informacion del pedido con una interfaz estable y adaptable a cualquier pantalla.
+            <p className="mt-1 text-sm leading-6 text-slate-600">
+              Completa la informacion del pedido.
             </p>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="px-5 py-3 sm:px-8 sm:py-4">
+        <form onSubmit={handleSubmit} className="px-5 py-2 sm:px-8 sm:py-2.5">
           {error ? (
             <div className="mb-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
               {error}
             </div>
           ) : null}
 
-          <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
-            <div className="md:col-span-2">
+          <div className="grid grid-cols-1 gap-1.5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="md:col-span-2 xl:col-span-3">
               <FieldLabel htmlFor="campo_cliente_pedido" icon={UserRound}>
                 Cliente
               </FieldLabel>
@@ -346,7 +346,7 @@ function RegistrarPedido() {
               </div>
             </div>
 
-            <div>
+            <div className="xl:col-span-1">
               <FieldLabel htmlFor="campo_precio_unitario_pedido" icon={Wallet}>
                 Precio Unitario
               </FieldLabel>
@@ -363,10 +363,10 @@ function RegistrarPedido() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-[24px] border border-slate-200 bg-slate-50 p-5">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-2.5 rounded-[24px] border border-slate-200 bg-slate-50 p-3.5">
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Detalles del Pedido</h3>
+                <h3 className="text-[15px] font-bold text-slate-900">Detalles del Pedido</h3>
                 <p className="mt-1 text-sm text-slate-600">
                   Agrega los productos antes de guardar el pedido.
                 </p>
@@ -384,17 +384,17 @@ function RegistrarPedido() {
             </div>
 
             {pedido.detallesPedido.length === 0 ? (
-              <div className="mt-4 rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-6 text-center text-sm text-slate-500">
+              <div className="mt-2.5 rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-3.5 text-center text-sm text-slate-500">
                 No hay detalles agregados aun.
               </div>
             ) : (
-              <div className="mt-4 grid grid-cols-1 gap-3">
+              <div className="mt-2.5 grid grid-cols-1 gap-2">
                 {pedido.detallesPedido.map((detalle, index) => (
                   <div
                     key={`${detalle.producto_IdProducto}-${index}`}
-                    className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm"
+                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm"
                   >
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div>
                         <p className="text-sm font-semibold text-slate-900">{detalle.nombreProducto}</p>
                         <p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
@@ -416,7 +416,7 @@ function RegistrarPedido() {
             )}
           </div>
 
-          <div className="mt-4 flex flex-col-reverse gap-3 border-t border-slate-200 pt-3 sm:flex-row sm:justify-end">
+          <div className="mt-2.5 flex flex-col-reverse gap-3 border-t border-slate-200 pt-2.5 sm:flex-row sm:justify-end">
             <button
               id="boton_cancelar_pedido"
               className={`${actionButtonClass} border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus:ring-slate-200`}

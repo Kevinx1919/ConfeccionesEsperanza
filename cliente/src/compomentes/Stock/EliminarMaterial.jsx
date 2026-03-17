@@ -105,23 +105,23 @@ function EliminarMaterial() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-[66rem] px-4 py-2 sm:px-6 lg:px-8">
       <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)]">
-        <div className="border-b border-rose-200 bg-[linear-gradient(135deg,#fff1f2_0%,#fff7ed_55%,#ffffff_100%)] px-5 py-8 sm:px-8">
+        <div className="border-b border-rose-200 bg-[linear-gradient(135deg,#fff1f2_0%,#fff7ed_55%,#ffffff_100%)] px-5 py-4 sm:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center rounded-full border border-rose-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-rose-700">
               Accion delicada
             </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-2.5 text-[1.8rem] font-bold tracking-tight text-slate-900 sm:text-[2.2rem]">
               Eliminar Material
             </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
+            <p className="mt-1.5 text-sm leading-6 text-slate-600">
               Revisa la informacion antes de eliminar. Esta accion afecta de forma permanente el inventario.
             </p>
           </div>
         </div>
 
-        <div className="px-5 py-6 sm:px-8 sm:py-8">
+        <div className="px-5 py-4 sm:px-8 sm:py-5">
           {error ? (
             <div className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
               {error}
@@ -129,22 +129,22 @@ function EliminarMaterial() {
           ) : null}
 
           {material ? (
-            <div className="rounded-[28px] border border-amber-200 bg-amber-50/70 p-6 shadow-inner">
-              <div className="flex items-start gap-4">
+            <div className="rounded-[28px] border border-amber-200 bg-amber-50/70 p-4 shadow-inner">
+              <div className="flex items-start gap-3">
                 <div className="rounded-2xl bg-amber-100 p-3 text-amber-700">
                   <ShieldAlert className="h-6 w-6" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-slate-900">
                     Esta seguro de que desea eliminar el siguiente material?
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">
+                  <p className="mt-1.5 text-sm text-slate-600">
                     Verifica cada dato antes de continuar para evitar perdidas de informacion.
                   </p>
                 </div>
               </div>
 
-              <dl className="mt-6 grid grid-cols-1 gap-4 rounded-[24px] bg-white p-5 shadow-sm sm:grid-cols-2">
+              <dl className="mt-4 grid grid-cols-1 gap-3 rounded-[24px] bg-white p-4 shadow-sm sm:grid-cols-2">
                 <div>
                   <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                     Nombre
@@ -189,14 +189,14 @@ function EliminarMaterial() {
                 </div>
               </dl>
 
-              <div className="mt-5 flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-4 text-sm text-rose-700">
+              <div className="mt-4 flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                 <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
                 <p className="font-semibold">Esta accion no se puede deshacer.</p>
               </div>
             </div>
           ) : null}
 
-          <div className="mt-8 flex flex-col-reverse gap-3 border-t border-slate-200 pt-6 sm:flex-row sm:justify-end">
+          <div className="mt-4 flex flex-col-reverse gap-3 border-t border-slate-200 pt-4 sm:flex-row sm:justify-end">
             <button
               id="boton_cancelar_eliminacion_material_stock"
               className={`${actionButtonClass} border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus:ring-slate-200 boton_cancelar_eliminacion_material_stock`}
