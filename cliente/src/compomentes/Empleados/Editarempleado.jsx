@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
   BadgeCheck,
+  KeyRound,
   Mail,
   Phone,
   Save,
@@ -36,7 +37,7 @@ const FieldLabel = ({ htmlFor, icon: Icon, children }) => (
 function EditarEmpleado() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { getAuthHeaders } = useAuth();
+  const { getAuthHeaders, user } = useAuth();
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -45,6 +46,13 @@ function EditarEmpleado() {
   const [availableRoles, setAvailableRoles] = useState([]);
   const [initialRoles, setInitialRoles] = useState([]);
   const [selectedRoles, setSelectedRoles] = useState([]);
+  const [passwordForm, setPasswordForm] = useState({
+    newPassword: '',
+    confirmPassword: '',
+  });
+  const [passwordSaving, setPasswordSaving] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState('');
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -54,6 +62,7 @@ function EditarEmpleado() {
     twoFactorEnabled: false,
     lockoutEnabled: false,
   });
+  const isAdmin = (user?.roles || []).some((role) => role?.toLowerCase() === 'admin');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,6 +136,22 @@ function EditarEmpleado() {
     });
   };
 
+  const handlePasswordChange = (event) => {
+    const { name, value } = event.target;
+    setPasswordForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+
+    if (passwordError) {
+      setPasswordError('');
+    }
+
+    if (passwordSuccess) {
+      setPasswordSuccess('');
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setSaving(true);
@@ -191,6 +216,58 @@ function EditarEmpleado() {
       setError(submitError.message || 'No se pudo actualizar el empleado');
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handlePasswordSubmit = async (event) => {
+    event.preventDefault();
+    setPasswordError('');
+    setPasswordSuccess('');
+
+    if (!passwordForm.newPassword || !passwordForm.confirmPassword) {
+      setPasswordError('Completa la nueva contraseña y su confirmacion.');
+      return;
+    }
+
+    if (passwordForm.newPassword.length < 6) {
+      setPasswordError('La nueva contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setPasswordError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    try {
+      setPasswordSaving(true);
+
+      const response = await fetch(apiUrl(`/api/User/${id}/set-password`), {
+        method: 'POST',
+        headers: {
+          ...getAuthHeaders(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          newPassword: passwordForm.newPassword,
+          confirmPassword: passwordForm.confirmPassword,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.message || data.Message || 'No se pudo restablecer la contraseña.');
+      }
+
+      setPasswordSuccess('La contraseña del empleado se actualizo correctamente.');
+      setPasswordForm({
+        newPassword: '',
+        confirmPassword: '',
+      });
+    } catch (submitError) {
+      setPasswordError(submitError.message || 'No se pudo restablecer la contraseña.');
+    } finally {
+      setPasswordSaving(false);
     }
   };
 
@@ -420,6 +497,81 @@ function EditarEmpleado() {
               </div>
             </section>
           </div>
+
+          {isAdmin ? (
+            <section className={`${sectionCardClass} mt-4`}>
+              <div className="mb-4 flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900">Restablecer contraseña</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Como administrador puedes asignar una nueva contraseña para este usuario.
+                  </p>
+                </div>
+                <span className="rounded-xl bg-sky-100 p-2 text-sky-700">
+                  <KeyRound className="h-5 w-5" />
+                </span>
+              </div>
+
+              {passwordError ? (
+                <div className="mb-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
+                  {passwordError}
+                </div>
+              ) : null}
+
+              {passwordSuccess ? (
+                <div className="mb-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                  {passwordSuccess}
+                </div>
+              ) : null}
+
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                <div>
+                  <FieldLabel htmlFor="campo_nueva_password_admin_empleado" icon={KeyRound}>
+                    Nueva contraseña
+                  </FieldLabel>
+                  <input
+                    id="campo_nueva_password_admin_empleado"
+                    className={formFieldClass}
+                    type="password"
+                    name="newPassword"
+                    value={passwordForm.newPassword}
+                    onChange={handlePasswordChange}
+                    autoComplete="new-password"
+                    disabled={passwordSaving || saving}
+                  />
+                </div>
+
+                <div>
+                  <FieldLabel htmlFor="campo_confirmar_password_admin_empleado" icon={KeyRound}>
+                    Confirmar contraseña
+                  </FieldLabel>
+                  <input
+                    id="campo_confirmar_password_admin_empleado"
+                    className={formFieldClass}
+                    type="password"
+                    name="confirmPassword"
+                    value={passwordForm.confirmPassword}
+                    onChange={handlePasswordChange}
+                    autoComplete="new-password"
+                    disabled={passwordSaving || saving}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 flex justify-end">
+                <button
+                  id="boton_restablecer_password_admin_empleado"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#0ea5e9_0%,#2563eb_100%)] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-500/25 focus:outline-none focus:ring-4 focus:ring-sky-200 disabled:cursor-not-allowed disabled:opacity-60"
+                  type="button"
+                  onClick={handlePasswordSubmit}
+                  disabled={passwordSaving || saving}
+                >
+                  <KeyRound className="h-4 w-4" />
+                  {passwordSaving ? 'Restableciendo...' : 'Actualizar contraseña'}
+                </button>
+              </div>
+            </section>
+          ) : null}
 
           <div className="mt-5 flex flex-col-reverse gap-3 border-t border-slate-200 pt-4 sm:flex-row sm:justify-end">
             <button
