@@ -24,6 +24,7 @@ function Login() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
@@ -35,6 +36,10 @@ function Login() {
 
     if (error) {
       setError('');
+    }
+
+    if (forgotPasswordMessage) {
+      setForgotPasswordMessage('');
     }
   };
 
@@ -99,6 +104,14 @@ function Login() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleForgotPasswordClick = (event) => {
+    event.preventDefault();
+    setError('');
+    setForgotPasswordMessage(
+      'La recuperacion automatica de contraseña no esta disponible por el momento. Solicita el restablecimiento a un administrador del sistema.',
+    );
   };
 
   return (
@@ -175,6 +188,12 @@ function Login() {
                 {error ? (
                   <div className="mt-6 rounded-2xl border border-rose-300/20 bg-rose-500/10 px-4 py-3 text-sm font-medium text-rose-100">
                     {error}
+                  </div>
+                ) : null}
+
+                {forgotPasswordMessage ? (
+                  <div className="mt-6 rounded-2xl border border-sky-300/20 bg-sky-500/10 px-4 py-3 text-sm font-medium text-sky-100">
+                    {forgotPasswordMessage}
                   </div>
                 ) : null}
 
@@ -288,6 +307,7 @@ function Login() {
                     <a
                       className="font-semibold text-violet-100 underline decoration-violet-200/25 underline-offset-4 transition hover:text-white hover:decoration-white"
                       href="/forgot-password"
+                      onClick={handleForgotPasswordClick}
                     >
                       ¿Olvidaste tu contraseña?
                     </a>
