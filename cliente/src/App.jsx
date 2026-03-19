@@ -40,6 +40,7 @@ import RegistrarTarea from "./compomentes/Tareas/RegistrarTarea";
 import EditarTarea from "./compomentes/Tareas/EditarTarea";
 import EliminarTarea from "./compomentes/Tareas/EliminarTarea";
 import AsignacionTarea from "./compomentes/Tareas/AsignacionTarea";
+import ConsultarAsignacionesTarea from "./compomentes/Tareas/ConsultarAsignacionesTarea";
 //importaciones para reposrtes
 import MenuReporte from "./compomentes/Reportes/MenuReporte";
 //importaciones para el perfil de usuario 
@@ -116,6 +117,7 @@ const MainApp = () => {
         <Route path="/editarTarea/:id" element={<EditarTarea />} />
         <Route path="/eliminarTarea/:id" element={<EliminarTarea />} />
         <Route path="/asignacionTarea" element={<AsignacionTarea />} />
+        <Route path="/consultarAsignacionesTarea" element={<ConsultarAsignacionesTarea />} />
         
         {/* Rutas para reportes */}
         <Route path="/reportes" element={<MenuReporte />} />
