@@ -70,6 +70,8 @@ function RegistrarPedido() {
   const [error, setError] = useState('');
   const [clientes, setClientes] = useState([]);
   const [productos, setProductos] = useState([]);
+  const subtotalDetalle =
+    (parseFloat(nuevoDetalle.cantidad) || 0) * (parseFloat(nuevoDetalle.precioUnitario) || 0);
 
   useEffect(() => {
     const fetchClientes = async () => {
@@ -163,6 +165,7 @@ function RegistrarPedido() {
         ...prev.detallesPedido,
         {
           ...nuevoDetalle,
+          subtotal: (parseFloat(nuevoDetalle.cantidad) || 0) * (parseFloat(nuevoDetalle.precioUnitario) || 0),
           nombreProducto,
         },
       ],
@@ -361,6 +364,20 @@ function RegistrarPedido() {
                 disabled={loading}
               />
             </div>
+
+            <div className="xl:col-span-1">
+              <FieldLabel htmlFor="campo_subtotal_detalle_pedido" icon={Wallet}>
+                Valor del detalle
+              </FieldLabel>
+              <input
+                id="campo_subtotal_detalle_pedido"
+                className={`${formFieldClass} font-semibold text-slate-900`}
+                type="text"
+                value={`$${subtotalDetalle.toFixed(2)}`}
+                disabled
+                readOnly
+              />
+            </div>
           </div>
 
           <div className="mt-2.5 rounded-[24px] border border-slate-200 bg-slate-50 p-3.5">
@@ -407,6 +424,12 @@ function RegistrarPedido() {
                         </span>
                         <span className="rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-700">
                           Precio: ${parseFloat(detalle.precioUnitario).toFixed(2)}
+                        </span>
+                        <span className="rounded-full bg-violet-50 px-3 py-1 font-medium text-violet-700">
+                          Total: ${(
+                            detalle.subtotal ??
+                            (parseFloat(detalle.cantidad) || 0) * (parseFloat(detalle.precioUnitario) || 0)
+                          ).toFixed(2)}
                         </span>
                       </div>
                     </div>
