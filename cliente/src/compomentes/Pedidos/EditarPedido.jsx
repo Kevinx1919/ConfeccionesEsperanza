@@ -16,24 +16,37 @@ const inputClass =
   'w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100';
 
 const normalizeDetalle = (detalle) => ({
-  idDetallePedido: detalle.idDetallePedido ?? detalle.IdDetallePedido ?? null,
-  producto_IdProducto: detalle.producto_IdProducto ?? detalle.Producto_IdProducto ?? null,
+  idDetallePedido:
+    detalle.idDetallePedido ?? detalle.IdDetallePedido ?? detalle.id ?? detalle.Id ?? null,
+  producto_IdProducto:
+    detalle.producto_IdProducto ??
+    detalle.Producto_IdProducto ??
+    detalle.productoId ??
+    detalle.ProductoId ??
+    null,
   productoNombre: detalle.productoNombre ?? detalle.ProductoNombre ?? 'Producto',
   cantidad: detalle.cantidad ?? detalle.Cantidad ?? 0,
   precioUnitario: detalle.precioUnitario ?? detalle.PrecioUnitario ?? 0,
+  subtotal: detalle.subtotal ?? detalle.Subtotal ?? 0,
 });
 
 const normalizePedido = (payload) => {
   const pedido = readValue(payload, ['pedido', 'Pedido'], payload) || {};
+  const detalles = readCollection(pedido, [
+    'detallesPedido',
+    'DetallesPedido',
+    'detalles',
+    'Detalles',
+    'items',
+    'Items',
+  ]);
 
   return {
     idPedido: pedido.idPedido ?? pedido.IdPedido ?? 0,
     cliente_IdCliente: pedido.cliente_IdCliente ?? pedido.Cliente_IdCliente ?? 0,
     estado: pedido.estado ?? pedido.Estado ?? 0,
     fechaEntrega: pedido.fechaEntrega ?? pedido.FechaEntrega ?? '',
-    detallesPedido: readCollection(pedido.detallesPedido ?? pedido.DetallesPedido ?? [], []).map(
-      normalizeDetalle,
-    ),
+    detallesPedido: detalles.map(normalizeDetalle),
   };
 };
 
@@ -230,6 +243,12 @@ const EditarPedido = () => {
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-3">
+                {detallesPedido.length === 0 ? (
+                  <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-6 text-center text-sm text-slate-500">
+                    No se recibieron detalles del pedido para editar.
+                  </div>
+                ) : null}
+
                 {detallesPedido.map((detalle, index) => {
                   const detalleId =
                     detalle.idDetallePedido ?? detalle.producto_IdProducto ?? `detalle-${index}`;
@@ -244,6 +263,13 @@ const EditarPedido = () => {
                           <p className="text-sm font-semibold text-slate-900">{detalle.productoNombre}</p>
                           <p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
                             Producto del pedido
+                          </p>
+                          <p className="mt-2 text-sm text-slate-600">
+                            Valor actual: {new Intl.NumberFormat('es-CO', {
+                              style: 'currency',
+                              currency: 'COP',
+                              maximumFractionDigits: 0,
+                            }).format(detalle.subtotal || detalle.cantidad * detalle.precioUnitario)}
                           </p>
                         </div>
                         <div className="w-full sm:w-36">
