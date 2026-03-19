@@ -28,6 +28,8 @@ const normalizePedido = (payload) => {
 
   return {
     idPedido: pedido.idPedido ?? pedido.IdPedido ?? 0,
+    cliente_IdCliente: pedido.cliente_IdCliente ?? pedido.Cliente_IdCliente ?? 0,
+    estado: pedido.estado ?? pedido.Estado ?? 0,
     fechaEntrega: pedido.fechaEntrega ?? pedido.FechaEntrega ?? '',
     detallesPedido: readCollection(pedido.detallesPedido ?? pedido.DetallesPedido ?? [], []).map(
       normalizeDetalle,
@@ -120,7 +122,11 @@ const EditarPedido = () => {
       setError('');
 
       await updatePedido(id, {
-        fechaEntrega,
+        cliente_IdCliente: pedido.cliente_IdCliente,
+        estado: pedido.estado,
+        fechaEntrega: fechaEntrega
+          ? new Date(`${fechaEntrega}T00:00:00`).toISOString()
+          : pedido.fechaEntrega,
         detallesPedido: detallesPedido.map((detalle) => ({
           idDetallePedido: detalle.idDetallePedido,
           producto_IdProducto: detalle.producto_IdProducto,

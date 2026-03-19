@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ClipboardList, HardHat, Plus } from 'lucide-react';
+import { ArrowLeft, ClipboardCheck, ClipboardList, HardHat, Plus } from 'lucide-react';
 
 function MenuTarea() {
   const navigate = useNavigate();
@@ -69,6 +69,22 @@ function MenuTarea() {
               </div>
               <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
                 <HardHat className="h-7 w-7" strokeWidth={2.2} />
+              </span>
+            </button>
+
+            <button
+              id="boton_gestionar_asignaciones_menu_tarea"
+              className="group flex min-h-28 items-center justify-between rounded-2xl border border-violet-200 bg-[linear-gradient(135deg,#7c3aed_0%,#4f46e5_100%)] px-5 py-4 text-left text-white shadow-[0_18px_40px_-26px_rgba(99,102,241,0.75)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-24px_rgba(99,102,241,0.9)] focus:outline-none focus:ring-4 focus:ring-violet-200 boton_gestionar_asignaciones_menu_tarea"
+              onClick={() => navigate('/consultarAsignacionesTarea')}
+            >
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-50/90">
+                  Avance
+                </p>
+                <p className="mt-2 text-xl font-semibold sm:text-2xl">Gestionar asignaciones</p>
+              </div>
+              <span className="rounded-2xl bg-white/15 p-3 ring-1 ring-white/20 transition group-hover:bg-white/20">
+                <ClipboardCheck className="h-7 w-7" strokeWidth={2.2} />
               </span>
             </button>
 

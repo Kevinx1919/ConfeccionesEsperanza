@@ -114,7 +114,7 @@ function AsignacionTarea() {
         throw new Error('No se pudo asignar la tarea');
       }
 
-      navigate('/consultarTareas');
+      navigate('/consultarAsignacionesTarea');
     } catch (submitError) {
       setError('No se pudo asignar la tarea. Intenta nuevamente.');
     } finally {
